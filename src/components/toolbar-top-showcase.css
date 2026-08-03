@@ -1,0 +1,113 @@
+.toolbar-showcase {
+  min-height: 100svh;
+  padding: var(--space-8) var(--space-6) var(--space-12);
+  color: var(--colors-text-color-text-primary);
+  background: var(--colors-backgrouds-primary);
+}
+
+.toolbar-showcase__header,
+.toolbar-showcase__canvas {
+  width: min(100%, 520px);
+  margin-inline: auto;
+}
+
+.toolbar-showcase__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.toolbar-showcase__header a {
+  color: var(--colors-semantic-labels-mom-secondary);
+  font-size: var(--type-body-s-medium-font-size);
+  font-weight: var(--type-body-s-medium-font-weight);
+  text-decoration: none;
+}
+
+.toolbar-showcase__header h1 {
+  margin: var(--space-1) 0 var(--space-1);
+  font-family: var(--font-brand);
+  font-size: var(--type-heading-xl-font-size);
+  font-weight: var(--type-heading-xl-font-weight);
+  line-height: var(--type-heading-xl-line-height);
+}
+
+.toolbar-showcase__header p {
+  margin: 0;
+  color: var(--colors-text-color-text-secondary);
+  font-size: var(--type-body-m-regular-font-size);
+  line-height: var(--type-body-m-regular-line-height);
+}
+
+.toolbar-showcase__theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: var(--colors-border-width-primary) solid var(--colors-border-primary);
+  border-radius: var(--radius-full);
+  color: var(--colors-text-color-text-primary);
+  background: var(--colors-backgrouds-secondary);
+}
+
+.toolbar-showcase__theme-toggle:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.toolbar-showcase__canvas {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) 0 var(--space-2);
+  border: 1px dashed var(--colors-brands-care-500);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      color-mix(in srgb, var(--colors-brands-mom-300) 16%, transparent),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 88% 64%,
+      color-mix(in srgb, var(--colors-brands-care-300) 14%, transparent),
+      transparent 31%
+    ),
+    var(--colors-backgrouds-secondary);
+}
+
+.toolbar-showcase__row {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+}
+
+.toolbar-showcase__label {
+  color: var(--colors-text-color-text-tertiary);
+  font-size: var(--type-caption-m-medium-font-size);
+  font-weight: var(--type-caption-m-medium-font-weight);
+  line-height: var(--type-caption-m-medium-line-height);
+}
+
+@media (max-width: 560px) {
+  .toolbar-showcase {
+    padding: var(--space-5) 0 var(--space-8);
+  }
+
+  .toolbar-showcase__header {
+    padding-inline: var(--space-4);
+  }
+
+  .toolbar-showcase__canvas {
+    width: 100%;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+}

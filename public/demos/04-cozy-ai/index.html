@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Cozy AI · Momcozy Demo 04</title>
+    <link rel="stylesheet" href="../01-user-guide/momcozy-theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="../_shared/momcozy-icons.js" defer></script>
+    <script>
+      (() => {
+        const saved = localStorage.getItem('momcozy-theme')
+        const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+      <momcozy-icon class="theme-icon theme-icon--moon" name="themeMoon" aria-hidden="true"></momcozy-icon>
+      <momcozy-icon class="theme-icon theme-icon--sun" name="themeSun" aria-hidden="true"></momcozy-icon>
+    </button>
+
+    <main class="demo-stage">
+      <section class="phone-screen" aria-label="Cozy AI product demo">
+        <section class="welcome-view" id="welcomeView" aria-labelledby="welcomeTitle">
+          <header class="welcome-topbar">
+            <span class="cozy-brand">
+              <momcozy-icon name="ai" aria-hidden="true"></momcozy-icon>
+              Cozy AI
+            </span>
+          </header>
+
+          <div class="welcome-body">
+            <img
+              class="cozy-happy cozy-happy--large"
+              src="./assets/cozy-happy.png"
+              alt=""
+              aria-hidden="true"
+              data-node-id="83:9"
+              draggable="false"
+            />
+            <h1 id="welcomeTitle">How can I help today?</h1>
+            <p class="welcome-subtitle">
+              Warm answers for feeding, sleep, device support, and everyday baby care.
+            </p>
+
+            <div class="welcome-cards" aria-label="What Cozy AI offers">
+              <article class="welcome-card welcome-card--mom">
+                <span class="welcome-card__icon" aria-hidden="true"><momcozy-icon name="favorite"></momcozy-icon></span>
+                <strong>Care that knows you</strong>
+                <span>Advice shaped around your baby and routine.</span>
+              </article>
+              <article class="welcome-card welcome-card--care">
+                <span class="welcome-card__icon" aria-hidden="true"><momcozy-icon name="ai"></momcozy-icon></span>
+                <strong>Everyday answers</strong>
+                <span>Ask about sleep, feeding, recovery, or devices.</span>
+              </article>
+              <article class="welcome-card welcome-card--family">
+                <span class="welcome-card__icon" aria-hidden="true"><momcozy-icon name="check"></momcozy-icon></span>
+                <strong>Plans you control</strong>
+                <span>Review every AI suggestion before it is saved.</span>
+              </article>
+            </div>
+          </div>
+
+          <footer class="welcome-footer">
+            <label class="privacy-consent">
+              <input id="privacyConsent" type="checkbox" />
+              <span>I agree to <button id="privacyLink" type="button">Privacy Statement</button></span>
+            </label>
+            <button class="button button--primary button--large" id="getStarted" type="button" disabled>
+              Get Started
+            </button>
+          </footer>
+        </section>
+
+        <section class="chat-view" id="chatView" aria-label="Cozy AI chat" hidden>
+          <header class="chat-topbar">
+            <button class="avatar-button" type="button" aria-label="Profile">
+              <img src="../../figma/community-avatar.png" alt="" />
+              <span>2</span>
+            </button>
+
+            <div class="chat-identity">
+              <strong>Cozy AI</strong>
+            </div>
+
+            <div class="chat-actions">
+              <button class="icon-button" id="historyButton" type="button" aria-label="Chat history" title="Chat history">
+                <momcozy-icon name="history" aria-hidden="true"></momcozy-icon>
+              </button>
+              <button class="icon-button" id="newChatButton" type="button" aria-label="Start a new chat" title="Start a new chat">
+                <momcozy-icon name="edit" aria-hidden="true"></momcozy-icon>
+              </button>
+            </div>
+          </header>
+
+          <section class="next-up" id="nextUp">
+            <div class="next-up__head">
+              <button class="next-up__label" id="nextUpToggle" type="button" aria-expanded="true">
+                <momcozy-icon name="info" aria-hidden="true"></momcozy-icon>
+                <span>What&rsquo;s coming up next?</span>
+              </button>
+              <button class="next-up__jump" type="button" aria-label="Open schedule">
+                <momcozy-icon name="jump" aria-hidden="true"></momcozy-icon>
+              </button>
+              <button class="next-up__chevron" id="nextUpChevron" type="button" aria-label="Collapse">
+                <momcozy-icon name="arrowDown" aria-hidden="true"></momcozy-icon>
+              </button>
+            </div>
+            <div class="next-up__content" id="nextUpContent">
+              <strong>We&rsquo;re still learning your rhythm.</strong>
+              <span>Chat and log a little more — forecasts get sharper the more I know.</span>
+            </div>
+          </section>
+
+          <div class="chat-stream" id="chatStream" aria-live="polite">
+            <h1 class="chat-greeting">Good <span id="dayPart">day</span>, <em>Clare</em></h1>
+
+            <article class="message message--assistant">
+              <div class="assistant-label">
+                <div class="cozy-orb cozy-orb--tiny" aria-hidden="true"></div>
+                <span>Cozy AI</span>
+              </div>
+              <p>I&rsquo;m here whenever you need a calm second opinion. What would feel most helpful right now?</p>
+            </article>
+
+            <section class="skill-card" id="skillCard">
+              <span class="skill-card__eyebrow"><momcozy-icon name="sparkles" size="12" aria-hidden="true"></momcozy-icon> Personalized skill</span>
+              <h2>Create a lactation plan</h2>
+              <p>Build a practical pumping rhythm around your goal, baby&rsquo;s age, and daily routine.</p>
+              <button class="button button--secondary" id="startPlanButton" type="button">Start plan</button>
+            </section>
+          </div>
+
+          <div class="composer-dock">
+            <div class="quick-prompts" id="quickPrompts" aria-label="Suggested questions">
+              <button class="quick-prompt quick-prompt--skill" type="button" data-prompt="Help me make a lactation plan"><momcozy-icon name="sparkles" size="12" aria-hidden="true"></momcozy-icon> Lactation plan</button>
+              <button class="quick-prompt" type="button" data-prompt="My baby keeps waking at night">Night waking</button>
+              <button class="quick-prompt" type="button" data-prompt="Log a 20 minute pumping session">Log pumping</button>
+            </div>
+            <form class="composer" id="composerForm">
+              <button class="composer__add" type="button" aria-label="Attach image">
+                <momcozy-icon name="attachment" aria-hidden="true"></momcozy-icon>
+              </button>
+              <textarea id="messageInput" rows="1" placeholder="Ask a question or log your baby's day" aria-label="Message"></textarea>
+              <button class="composer__send" id="sendButton" type="submit" aria-label="Send" disabled>
+                <momcozy-icon name="send" aria-hidden="true"></momcozy-icon>
+              </button>
+            </form>
+            <p class="disclaimer">AI-generated, not professional advice.</p>
+          </div>
+        </section>
+
+        <nav class="glass-tab-bar" aria-label="Primary navigation">
+          <button type="button" class="tab-item" data-tab="Home">
+            <momcozy-icon name="home" aria-hidden="true"></momcozy-icon>
+            <span>Home</span>
+          </button>
+          <button type="button" class="tab-item" data-tab="Device">
+            <momcozy-icon name="package" aria-hidden="true"></momcozy-icon>
+            <span>Device</span>
+          </button>
+          <button type="button" class="tab-item tab-item--ai is-active" aria-current="page">
+            <momcozy-icon name="ai" aria-hidden="true"></momcozy-icon>
+            <span>AI</span>
+          </button>
+          <button type="button" class="tab-item" data-tab="Community">
+            <momcozy-icon name="community" aria-hidden="true"></momcozy-icon>
+            <span>Community</span>
+          </button>
+          <button type="button" class="tab-item" data-tab="Me">
+            <momcozy-icon name="profile" aria-hidden="true"></momcozy-icon>
+            <span>Me</span>
+          </button>
+        </nav>
+
+        <div class="history-scrim" id="historyScrim"></div>
+        <aside class="history-drawer" id="historyDrawer" aria-label="Chat history" aria-hidden="true">
+          <header>
+            <strong>Chat history</strong>
+            <button id="closeHistoryButton" type="button" aria-label="Close history"><momcozy-icon name="close" aria-hidden="true"></momcozy-icon></button>
+          </header>
+          <button class="history-item is-active" type="button">
+            <strong>Getting to know your rhythm</strong>
+            <span>Today · Cozy AI</span>
+          </button>
+          <div class="history-empty">
+            <p>More conversations will appear here.</p>
+            <span>Demo data stays on this device.</span>
+          </div>
+        </aside>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog class="privacy-dialog" id="privacyDialog">
+      <form method="dialog">
+        <div class="privacy-dialog__icon" aria-hidden="true"><momcozy-icon name="check"></momcozy-icon></div>
+        <h2>Your information stays in your control</h2>
+        <p>This library demo uses local sample responses and does not send chat content to an external AI service.</p>
+        <button class="button button--primary" value="close">Got it</button>
+      </form>
+    </dialog>
+
+    <script src="./app.js"></script>
+    <script src="../_shared/demo-settings-bridge.js?v=20260803-shared-stage-template"></script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+017debed4dbdf41fc97b4661660b15abd46c0394709d99f3f13b5bac560cfd82  momcozy-shadcn-design-system-1.0.0.skill
+e5656fae630253e1608f857674c516b86f917dfaf8b93820e5169b8083a50687  momcozy-design-system-demo-1.0.0.zip

@@ -1,0 +1,43 @@
+{
+  "name": "momcozy-design-system-demo",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "scripts": {
+    "demo": "vite --host 127.0.0.1 --port 5177 --open /demos",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "icons:build": "node scripts/build-demo-icons.mjs",
+    "icons:audit": "python3 skills/momcozy-shadcn-design-system/scripts/audit_icons.py public/demos",
+    "icons:catalog": "python3 skills/momcozy-shadcn-design-system/scripts/generate_icon_catalog.py --registry src/lib/icons.ts --demos-root public/demos --output public/demos/icon-catalog.md",
+    "icons:review": "python3 skills/momcozy-shadcn-design-system/scripts/generate_icon_catalog.py --registry src/lib/icons.ts --demos-root public/demos --output public/demos/icon-catalog.md --review-demo",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "components:dev": "pnpm --dir momcozy-ui-playground dev --host 127.0.0.1 --port 5180",
+    "components:build": "pnpm --dir momcozy-ui-playground build",
+    "sync:guide-theme": "node scripts/sync-user-guide-theme.mjs"
+  },
+  "dependencies": {
+    "@hugeicons/core-free-icons": "^4.2.3",
+    "@hugeicons/react": "^1.1.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}

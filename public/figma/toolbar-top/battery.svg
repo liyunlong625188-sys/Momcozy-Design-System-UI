@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Battery">
+<rect id="Rectangle 34624961" opacity="0.4" x="1.375" y="5.375" width="15.25" height="9.25" rx="2.29167" stroke="#240F1B" stroke-width="0.75"/>
+<path id="Cap" opacity="0.4" d="M18 8V12C18.606 11.6612 19 10.8731 19 10C19 9.12687 18.606 8.33878 18 8" fill="#240F1B"/>
+<path id="Rectangle 34624962" d="M3 8C3 7.44772 3.44772 7 4 7H13C13.5523 7 14 7.44772 14 8V12C14 12.5523 13.5523 13 13 13H4C3.44771 13 3 12.5523 3 12V8Z" fill="#240F1B"/>
+</g>
+</svg>

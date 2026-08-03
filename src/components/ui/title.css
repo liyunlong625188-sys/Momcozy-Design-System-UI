@@ -1,0 +1,186 @@
+.mc-title {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  color: var(--colors-text-color-text-primary);
+  font-family: var(--font-sans);
+}
+
+.mc-title--mom-baby {
+  justify-content: center;
+}
+
+.mc-title--mom,
+.mc-title--baby {
+  gap: var(--space-3);
+}
+
+.mc-title--body-title-two-line {
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.mc-title__selector {
+  max-width: 100%;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mc-title__selector:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-full);
+}
+
+.mc-title__profile {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.mc-title__popup {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.mc-title__greeting {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.32px;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mc-title__switch {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.mc-title__avatar {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.mc-title__mom-name,
+.mc-title__text {
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mc-title__mom-name,
+.mc-title--body-title .mc-title__text,
+.mc-title--body-title-two-line .mc-title__text {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.32px;
+}
+
+.mc-title--large-title .mc-title__text {
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.48px;
+}
+
+.mc-title--body-title .mc-title__text,
+.mc-title--body-title-two-line .mc-title__text {
+  text-align: center;
+}
+
+.mc-title__baby-copy {
+  width: 96px;
+  min-width: 0;
+  display: grid;
+  line-height: 18px;
+}
+
+.mc-title__baby-copy strong,
+.mc-title__baby-copy small {
+  overflow: hidden;
+  font-size: 12px;
+  letter-spacing: 0.24px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mc-title__baby-copy strong {
+  color: var(--colors-grays-1000);
+  font-weight: 500;
+}
+
+.mc-title__baby-copy small {
+  color: var(--colors-text-color-text-secondary);
+  font-weight: 400;
+  opacity: var(--alpha-80);
+}
+
+.mc-title__connected,
+.mc-title__battery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mc-title__connected {
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.28px;
+}
+
+.mc-title__bluetooth {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+.mc-title__bluetooth img {
+  width: 10.33px;
+  height: 13px;
+}
+
+.mc-title__separator {
+  width: 8px;
+  height: 1px;
+  flex: 0 0 auto;
+  transform: rotate(90deg);
+}
+
+.mc-title__battery {
+  gap: var(--space-1);
+}
+
+.mc-title__battery img {
+  width: 20px;
+  height: 20px;
+}
+
+.dark .mc-title__switch,
+.dark .mc-title__connected img {
+  filter: brightness(0) invert(1);
+}

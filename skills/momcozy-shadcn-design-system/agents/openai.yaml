@@ -1,0 +1,4 @@
+interface:
+  display_name: "Momcozy shadcn Design System"
+  short_description: "Build token and Hugeicons-consistent Momcozy demos"
+  default_prompt: "Use $momcozy-shadcn-design-system to design or implement a Momcozy smart maternal-baby IoT, care guidance, voice log, family health, or community interface with shadcn/ui, Momcozy 3.0 tokens, and the shared Hugeicons semantic registry."

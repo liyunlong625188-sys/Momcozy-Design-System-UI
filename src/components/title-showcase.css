@@ -1,0 +1,99 @@
+.title-showcase {
+  min-height: 100svh;
+  padding: var(--space-8) var(--space-6) var(--space-12);
+  color: var(--colors-text-color-text-primary);
+  background: var(--colors-backgrouds-primary);
+}
+
+.title-showcase__header {
+  width: min(100%, 520px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin: 0 auto var(--space-6);
+}
+
+.title-showcase__header a {
+  color: var(--colors-semantic-labels-mom-secondary);
+  font-size: var(--type-body-s-medium-font-size);
+  font-weight: var(--type-body-s-medium-font-weight);
+  text-decoration: none;
+}
+
+.title-showcase__header h1 {
+  margin: var(--space-1) 0;
+  font-family: var(--font-brand);
+  font-size: var(--type-heading-xl-font-size);
+  font-weight: var(--type-heading-xl-font-weight);
+  line-height: var(--type-heading-xl-line-height);
+}
+
+.title-showcase__header p {
+  margin: 0;
+  color: var(--colors-text-color-text-secondary);
+  font-size: var(--type-body-m-regular-font-size);
+  line-height: var(--type-body-m-regular-line-height);
+}
+
+.title-showcase__theme-toggle {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: var(--colors-border-width-primary) solid var(--colors-border-primary);
+  border-radius: var(--radius-full);
+  color: var(--colors-text-color-text-primary);
+  background: var(--colors-backgrouds-secondary);
+}
+
+.title-showcase__theme-toggle:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.title-showcase__canvas {
+  width: 248px;
+  height: 443px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-inline: auto;
+  padding: var(--space-5);
+  border: 1px dashed var(--colors-brands-care-500);
+  border-radius: var(--radius-md);
+  background: var(--colors-backgrouds-secondary);
+}
+
+.title-showcase__item {
+  display: flex;
+  align-items: center;
+}
+
+.title-showcase__item--mom {
+  margin-top: 44px;
+}
+
+.title-showcase__item--baby {
+  margin-top: 42px;
+}
+
+.title-showcase__item--body-title {
+  margin-top: 45px;
+}
+
+.title-showcase__item--large-title {
+  margin-top: 44px;
+}
+
+.title-showcase__item--body-title-two-line {
+  margin-top: 36px;
+}
+
+@media (max-width: 560px) {
+  .title-showcase {
+    padding: var(--space-5) var(--space-4) var(--space-8);
+  }
+}

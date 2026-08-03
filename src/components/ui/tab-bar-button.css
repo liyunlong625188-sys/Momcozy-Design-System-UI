@@ -1,0 +1,110 @@
+.tab-bar-button {
+  --tab-bar-button-color: var(--colors-brands-mom-900);
+  --tab-bar-button-selected-color: var(--colors-brands-mom-700);
+  --tab-bar-button-selection: var(--colors-grays-100);
+  position: relative;
+  width: 72px;
+  height: 54px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px 8px 7px;
+  border: 0;
+  border-radius: var(--radius-full);
+  color: var(--tab-bar-button-color);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-bar-button[data-mode='light'] {
+  --tab-bar-button-color: #3e0010;
+  --tab-bar-button-selected-color: #770523;
+  --tab-bar-button-selection: #f0eeef;
+}
+
+.tab-bar-button[data-mode='dark'] {
+  --tab-bar-button-color: #fff1f3;
+  --tab-bar-button-selected-color: #da5876;
+  --tab-bar-button-selection: #1e1c1e;
+}
+
+.tab-bar-button::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 -2px;
+  border-radius: inherit;
+  background: var(--tab-bar-button-selection);
+  content: '';
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 160ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tab-bar-button.is-selected {
+  color: var(--tab-bar-button-selected-color);
+  font-weight: 600;
+}
+
+.tab-bar-button.is-selected::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tab-bar-button[data-mode='dark'].is-selected::before,
+.dark .tab-bar-button:not([data-mode='light']).is-selected::before {
+  mix-blend-mode: plus-lighter;
+}
+
+.tab-bar-button__icon,
+.tab-bar-button__label {
+  position: relative;
+  z-index: 1;
+}
+
+.tab-bar-button__icon {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+}
+
+.tab-bar-button__label {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-bar-button:focus-visible {
+  z-index: 2;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.tab-bar-button:active {
+  transform: scale(0.97);
+}
+
+.tab-bar-button:disabled {
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-bar-button::before {
+    transition: none;
+  }
+}

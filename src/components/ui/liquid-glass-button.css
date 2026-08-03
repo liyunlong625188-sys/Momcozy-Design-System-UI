@@ -1,0 +1,138 @@
+.liquid-glass-button {
+  min-width: 44px;
+  height: 44px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border-radius: var(--radius-full);
+  color: var(--colors-text-color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.liquid-glass-button:focus-visible,
+.liquid-glass-button__action:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.liquid-glass-button:disabled,
+.liquid-glass-button.is-disabled {
+  cursor: not-allowed;
+  opacity: var(--alpha-45);
+}
+
+.liquid-glass-button--icon,
+.liquid-glass-button--icon-primary {
+  width: 44px;
+}
+
+.liquid-glass-button--icon-primary,
+.liquid-glass-button--text-primary {
+  color: var(--colors-grays-white);
+}
+
+.liquid-glass-button--two-icons {
+  width: 104px;
+  gap: var(--space-5);
+  padding-inline: 6px;
+}
+
+.liquid-glass-button--four-icons {
+  width: 216px;
+  gap: var(--space-5);
+  padding-inline: 6px;
+}
+
+.liquid-glass-button--text,
+.liquid-glass-button--text-primary {
+  width: 81px;
+  padding-inline: var(--space-5);
+}
+
+.liquid-glass-button--icon-text {
+  min-width: 113px;
+  padding-inline: var(--space-3);
+}
+
+.liquid-glass-button__label {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.32px;
+  white-space: nowrap;
+}
+
+.liquid-glass-button__action {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 6px;
+  border: 0;
+  border-radius: var(--radius-full);
+  color: inherit;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.liquid-glass-button__icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+.liquid-glass-button__icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.liquid-glass-button__icon.is-check img {
+  width: 15.5px;
+  height: 12.5px;
+}
+
+.liquid-glass-button__icon.is-image img {
+  width: 22px;
+  height: 20px;
+}
+
+.liquid-glass-button__icon.is-poll img {
+  width: 19.5px;
+  height: 19.5px;
+}
+
+.liquid-glass-button__icon.is-tag img {
+  width: 22px;
+  height: 22px;
+}
+
+.liquid-glass-button__icon.is-location img {
+  width: 18px;
+  height: 18px;
+}
+
+.dark .liquid-glass-button:not(.liquid-glass-button--icon-primary):not(.liquid-glass-button--text-primary)
+  .liquid-glass-button__icon
+  img {
+  filter: brightness(0) invert(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass-button {
+    transition: none;
+  }
+}

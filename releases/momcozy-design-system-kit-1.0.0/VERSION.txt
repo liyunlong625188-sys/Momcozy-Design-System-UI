@@ -1,0 +1,4 @@
+Momcozy Design System Kit
+Version: 1.0.0
+Build date: 2026-07-27
+Color baseline: App 3.0 Design, A confirmed and implemented

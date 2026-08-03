@@ -1,0 +1,195 @@
+/*
+ * Shared embedded-demo presentation template.
+ *
+ * The docs page owns the stage; each demo only supplies product content.
+ * Every embedded demo uses the same 402 x 872 mobile acceptance viewport,
+ * with 40px of stage space above and below the phone surface.
+ *
+ * Standalone demo pages do not load this file and keep their original QA shells.
+ */
+
+html.is-embedded {
+  --momcozy-demo-phone-width: 402px;
+  --momcozy-demo-phone-height: 872px;
+  --momcozy-demo-phone-radius: 50px;
+  --momcozy-demo-stage-space: 40px;
+  --momcozy-demo-stage-background: #f9f7f5; /* Backgrouds / Primary · light */
+  min-width: 0;
+}
+
+html.is-embedded.dark {
+  --momcozy-demo-stage-background: #000; /* Backgrouds / Primary · dark */
+}
+
+html.is-embedded[data-demo-layout],
+html.is-embedded[data-demo-layout] body.is-embedded {
+  height: auto;
+  min-height: calc(var(--momcozy-demo-phone-height) + (var(--momcozy-demo-stage-space) * 2));
+  background: var(--momcozy-demo-stage-background) !important;
+}
+
+html.is-embedded[data-demo-layout] body.is-embedded {
+  margin: 0;
+  display: flex;
+  box-sizing: border-box;
+  min-height: calc(var(--momcozy-demo-phone-height) + (var(--momcozy-demo-stage-space) * 2));
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--momcozy-demo-stage-space) 0 !important;
+  overflow: hidden;
+}
+
+/* Every embedded product surface uses the same mobile width contract. */
+html.is-embedded[data-demo-id="01-user-guide"] .app,
+html.is-embedded[data-demo-id="02-group-pumping"] .community-frame,
+html.is-embedded[data-demo-id="03-voice-log"] .demo,
+html.is-embedded[data-demo-id="04-cozy-ai"] .demo-stage,
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root > div > div,
+html.is-embedded[data-demo-id="06-partner-mode"] .phone {
+  width: min(100%, var(--momcozy-demo-phone-width)) !important;
+  max-width: var(--momcozy-demo-phone-width) !important;
+  height: var(--momcozy-demo-phone-height) !important;
+  min-height: var(--momcozy-demo-phone-height) !important;
+  max-height: var(--momcozy-demo-phone-height) !important;
+  margin-inline: auto !important;
+  overflow: hidden !important;
+  border-radius: var(--momcozy-demo-phone-radius) !important;
+}
+
+/* Inner phone surfaces inherit the shared acceptance height. */
+html.is-embedded[data-demo-id="03-voice-log"] .demo,
+html.is-embedded[data-demo-id="03-voice-log"] .device,
+html.is-embedded[data-demo-id="04-cozy-ai"] .demo-stage,
+html.is-embedded[data-demo-id="04-cozy-ai"] .phone-screen,
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root,
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root > div,
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] .phone-shadow,
+html.is-embedded[data-demo-id="06-partner-mode"] .phone {
+  height: var(--momcozy-demo-phone-height) !important;
+  min-height: var(--momcozy-demo-phone-height) !important;
+}
+
+/* 01 · User Guide */
+html.is-embedded[data-demo-id="01-user-guide"] .app {
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--momcozy-demo-phone-radius);
+  box-shadow: none;
+}
+
+html.is-embedded[data-demo-id="01-user-guide"] .screen.is-active {
+  position: relative;
+  inset: auto;
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+html.is-embedded[data-demo-id="01-user-guide"] .screen-list.is-active {
+  overflow-y: auto;
+}
+
+/* 02 · Community */
+html.is-embedded[data-demo-id="02-group-pumping"] .community-frame {
+  height: var(--momcozy-demo-phone-height) !important;
+  min-height: var(--momcozy-demo-phone-height) !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: var(--momcozy-demo-phone-radius) !important;
+  box-shadow: none !important;
+}
+
+html.is-embedded[data-demo-id="02-group-pumping"] .community {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* 03 · Voice Log: presentation controls stay available only in standalone QA. */
+html.is-embedded[data-demo-id="03-voice-log"] .demo {
+  display: block;
+  padding: 0;
+}
+
+html.is-embedded[data-demo-id="03-voice-log"] .device {
+  width: 100%;
+  aspect-ratio: auto;
+  grid-column: auto;
+}
+
+html.is-embedded[data-demo-id="03-voice-log"] .screen {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--momcozy-demo-phone-radius);
+}
+
+html.is-embedded[data-demo-id="03-voice-log"] :is(.phone-frame, .scenario-controls) {
+  display: none !important;
+}
+
+/* 04 · Cozy AI: expose the real app screen edge-to-edge. */
+html.is-embedded[data-demo-id="04-cozy-ai"] .demo-stage {
+  display: block;
+  padding: 0;
+}
+
+html.is-embedded[data-demo-id="04-cozy-ai"] .phone-screen {
+  width: 100%;
+  border: 0;
+  border-radius: var(--momcozy-demo-phone-radius);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+/* 05 · AI Lactation Plan: hide its desktop presentation board, retain the phone flow. */
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root {
+  width: 100%;
+}
+
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root > div {
+  padding: 0 !important;
+}
+
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root > div > div {
+  display: block !important;
+}
+
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root > div > div > :first-child {
+  display: none !important;
+}
+
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] #root > div > div > :last-child {
+  width: 100%;
+  justify-self: stretch !important;
+}
+
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] .phone-shadow {
+  width: 100% !important;
+  border: 0 !important;
+  border-radius: var(--momcozy-demo-phone-radius) !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+/* 06 · Partner Mode: keep the product screen and remove the external control rail. */
+html.is-embedded[data-demo-id="06-partner-mode"] body.is-embedded {
+  gap: 0;
+}
+
+html.is-embedded[data-demo-id="06-partner-mode"] .phone {
+  flex: 0 0 auto;
+  padding: 0;
+  border-radius: var(--momcozy-demo-phone-radius);
+  background: transparent;
+  box-shadow: none;
+}
+
+html.is-embedded[data-demo-id="06-partner-mode"] .screen {
+  border-radius: var(--momcozy-demo-phone-radius);
+}
+
+html.is-embedded[data-demo-id="06-partner-mode"] :is(.notch, .side-panel) {
+  display: none !important;
+}
