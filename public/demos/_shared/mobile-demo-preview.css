@@ -209,6 +209,13 @@ html.is-embedded[data-demo-id="05-ai-lactation-plan"] .phone-shadow {
   box-shadow: none !important;
 }
 
+html.is-embedded[data-demo-id="05-ai-lactation-plan"] .phone-shadow > :first-child {
+  border-radius: calc(
+    var(--momcozy-demo-phone-radius) - var(--momcozy-demo-phone-frame-width)
+  );
+  overflow: hidden;
+}
+
 /* 06 · Partner Mode: keep the product screen and remove the external control rail. */
 html.is-embedded[data-demo-id="06-partner-mode"] body.is-embedded {
   gap: 0;
