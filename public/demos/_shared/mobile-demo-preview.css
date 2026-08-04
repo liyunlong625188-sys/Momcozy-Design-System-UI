@@ -205,6 +205,8 @@ html.is-embedded[data-demo-id="05-ai-lactation-plan"] .phone-shadow {
   width: 100% !important;
   border: 0 !important;
   border-radius: var(--momcozy-demo-phone-radius) !important;
+  clip-path: inset(0 round var(--momcozy-demo-phone-radius));
+  isolation: isolate;
   overflow: hidden !important;
   box-shadow: none !important;
 }

@@ -208,7 +208,7 @@
   if (isEmbedded && bridgeScript?.src && !document.querySelector('link[data-momcozy-mobile-preview]')) {
     const previewStyles = document.createElement("link")
     previewStyles.rel = "stylesheet"
-    previewStyles.href = new URL("./mobile-demo-preview.css?v=20260804-phone-frame", bridgeScript.src).href
+    previewStyles.href = new URL("./mobile-demo-preview.css?v=20260804-corner-mask", bridgeScript.src).href
     previewStyles.dataset.momcozyMobilePreview = ""
     document.head.appendChild(previewStyles)
   }
