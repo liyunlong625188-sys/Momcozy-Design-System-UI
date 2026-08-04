@@ -37,9 +37,15 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: momcozy-ui-playground/pnpm-lock.yaml
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            momcozy-ui-playground/pnpm-lock.yaml
 
-      - name: Install dependencies
+      - name: Install shared component dependencies
+        working-directory: ${{ github.workspace }}
+        run: pnpm install --frozen-lockfile
+
+      - name: Install playground dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build site
