@@ -306,10 +306,16 @@ function updateListTopbarBackground() {
   const progress = (listScreen.scrollTop - LIST_TOPBAR_FADE_START) / (LIST_TOPBAR_FADE_END - LIST_TOPBAR_FADE_START);
   const opacity = Math.max(0, Math.min(1, progress));
   const buttonOpacity = 0.4 + (1 - 0.4) * opacity;
-  const iconInvert = getCurrentTheme() === "dark" ? 1 : 1 - opacity;
+  const isDark = getCurrentTheme() === "dark";
+  const iconInvert = isDark ? 1 : 1 - opacity;
+  const lightIconPercent = isDark ? 100 : (1 - opacity) * 100;
   listTopbar.style.setProperty("--list-nav-bg-opacity", opacity.toFixed(3));
   listTopbar.style.setProperty("--list-nav-button-opacity-percent", `${(buttonOpacity * 100).toFixed(1)}%`);
   listTopbar.style.setProperty("--list-nav-icon-invert", iconInvert.toFixed(3));
+  listTopbar.style.setProperty(
+    "--list-nav-icon-color",
+    `color-mix(in srgb, var(--colors-grays-white) ${lightIconPercent.toFixed(1)}%, var(--ink))`,
+  );
 }
 
 function getRelativeRect(element) {

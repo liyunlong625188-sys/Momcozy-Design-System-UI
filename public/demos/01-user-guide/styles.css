@@ -96,6 +96,7 @@ button {
   --list-nav-bg-opacity: 0;
   --list-nav-button-opacity-percent: var(--opacity-opacity-40);
   --list-nav-icon-invert: 1;
+  --list-nav-icon-color: var(--colors-grays-white);
   position: sticky;
   flex: 0 0 var(--guide-list-topbar-height);
   z-index: 20;
@@ -123,7 +124,7 @@ button {
 }
 
 .list-topbar .nav-circle momcozy-icon {
-  color: var(--colors-grays-white);
+  color: var(--list-nav-icon-color);
 }
 
 .dark .list-topbar .statusbar img {
@@ -404,7 +405,7 @@ button {
 }
 
 .list-topbar .nav-circle momcozy-icon {
-  color: var(--colors-grays-white);
+  color: var(--list-nav-icon-color);
 }
 
 .intro-copy {

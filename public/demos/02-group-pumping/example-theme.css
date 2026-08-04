@@ -37,9 +37,7 @@ textarea {
   letter-spacing: var(--type-heading-m-letter-spacing);
 }
 
-.phone,
 .round-icon,
-.post,
 .join-confirm-sheet,
 .leave-confirm-sheet,
 .tag-picker-sheet,
@@ -90,7 +88,6 @@ textarea {
 }
 
 .divider,
-.post,
 .compose-options-card,
 .selected-status-summary {
   border-color: var(--colors-border-primary);

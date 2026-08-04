@@ -42,7 +42,7 @@
       overflow: hidden;
       border: var(--colors-border-width-primary) solid var(--colors-border-primary);
       border-radius: var(--radius-4xl);
-      background: var(--colors-backgrouds-secondary);
+      background: var(--colors-backgrouds-primary);
       box-shadow:
         0 var(--tokens-32) var(--tokens-72)
           color-mix(in srgb, var(--colors-grays-900) 13%, transparent),
@@ -56,7 +56,7 @@
       padding: var(--space-4) var(--space-4) var(--tokens-96);
       overflow-x: hidden;
       overflow-y: auto;
-      background: transparent;
+      background: var(--colors-backgrouds-primary);
       scrollbar-width: none;
     }
 
@@ -557,13 +557,13 @@
         <h2 id="groups-title">Group</h2>
       </div>
       <div class="group-grid">
-        <a class="group-card" href="./group_v3.html" aria-label="Open Pumping moms group">
+          <a class="group-card" href="./group_v3.html?v=20260804-continuous-feed" aria-label="Open Pumping moms group">
           <span class="group-visual"><img src="./assets/pumpingmomsgroup.png" alt=""></span>
           <h3>Pumping moms</h3>
           <p class="group-meta">128 active · 3000 posts</p>
           <span class="group-cta">Join</span>
         </a>
-        <a class="group-card" href="./m9.html" aria-label="Open Mobile Flow 9 group">
+          <a class="group-card" href="./m9.html?v=20260804-continuous-feed" aria-label="Open Mobile Flow 9 group">
           <span class="group-visual"><img src="./assets/M9group.png" alt=""></span>
           <h3>Mobile Flow 9</h3>
           <p class="group-meta">1028 members · 3000 posts</p>
@@ -674,6 +674,6 @@
     <button class="floating-post" type="button">Post</button>
   </div>
   <script src="./theme-bridge.js?v=20260801-post-inside-page"></script>
-  <script src="../_shared/demo-settings-bridge.js?v=20260803-shared-stage-template"></script>
+  <script src="../_shared/demo-settings-bridge.js?v=20260804-phone-frame"></script>
 </body>
 </html>

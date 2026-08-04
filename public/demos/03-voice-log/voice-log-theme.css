@@ -92,9 +92,20 @@ body {
   color: var(--colors-text-color-text-primary);
 }
 
-.screen,
+.screen {
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--colors-backgrouds-primary);
+}
+
+.screen-scroll {
+  overflow: hidden auto;
+  border-radius: inherit;
+  background: inherit;
+}
+
 .page {
-  background: var(--colors-backgrouds-secondary);
+  background: var(--colors-backgrouds-primary);
 }
 
 .home-header-avatar {

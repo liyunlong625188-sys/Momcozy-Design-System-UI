@@ -69,6 +69,7 @@ export const momcozyIcons = {
   check: CheckmarkCircle01Icon,
   close: Cancel01Icon,
   community: Orbit01Icon,
+  device: PackageIcon,
   edit: Edit02Icon,
   featured: Fire03Icon,
   favorite: HeartIcon,

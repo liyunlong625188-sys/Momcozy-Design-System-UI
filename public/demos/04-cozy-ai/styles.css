@@ -58,7 +58,7 @@ svg {
   isolation: isolate;
   border: var(--colors-border-width-primary) solid var(--colors-border-primary);
   border-radius: var(--radius-4xl);
-  background: var(--colors-backgrouds-primary);
+  background: var(--colors-backgrouds-secondary);
   box-shadow:
     0 var(--tokens-32) var(--tokens-72) color-mix(in srgb, var(--colors-grays-900) 13%, transparent),
     0 var(--tokens-2) var(--tokens-8) color-mix(in srgb, var(--colors-grays-900) 6%, transparent);
@@ -113,7 +113,7 @@ svg {
   flex-direction: column;
   background:
     radial-gradient(circle at 84% 8%, color-mix(in srgb, var(--colors-brands-care-300) 28%, transparent), transparent 28%),
-    linear-gradient(180deg, var(--colors-brands-mom-75) 0%, var(--colors-backgrouds-primary) 46%);
+    linear-gradient(180deg, var(--colors-brands-mom-75) 0%, var(--colors-backgrouds-secondary) 46%);
 }
 
 .welcome-topbar {
@@ -378,7 +378,7 @@ svg {
   flex-direction: column;
   background:
     radial-gradient(circle at 50% -10%, color-mix(in srgb, var(--colors-brands-mom-100) 55%, transparent), transparent 34%),
-    var(--colors-backgrouds-primary);
+    var(--colors-backgrouds-secondary);
 }
 
 .chat-view[hidden],

@@ -14,11 +14,11 @@
 | 语义名 | Hugeicons export | 当前使用位置 | 状态 |
 | --- | --- | --- | --- |
 | `activity` | `Activity01Icon` | React × 2 | 已批准 |
-| `add` | `Add01Icon` | React × 1 | 已批准 |
-| `ai` | `AiMagicIcon` | 04-cozy-ai × 3、React × 1 | 已批准 |
+| `add` | `Add01Icon` | React × 2 | 已批准 |
+| `ai` | `AiMagicIcon` | 04-cozy-ai × 3、React × 2 | 已批准 |
 | `arrowDown` | `ArrowDown01Icon` | 04-cozy-ai × 1、React × 1 | 已批准 |
 | `arrowLeft` | `ArrowLeft01Icon` | 01-user-guide × 2、React × 1 | 已批准 |
-| `arrowRight` | `ArrowRight01Icon` | 01-user-guide × 1、React × 7、index.html × 4 | 已批准 |
+| `arrowRight` | `ArrowRight01Icon` | 01-user-guide × 1、React × 9、index.html × 6 | 已批准 |
 | `arrowUp` | `ArrowUp01Icon` | 暂未使用 | 已批准 |
 | `attachment` | `Attachment01Icon` | 04-cozy-ai × 1 | 已批准 |
 | `baby` | `Baby01Icon` | React × 2 | 已批准 |
@@ -27,21 +27,23 @@
 | `camera` | `Camera01Icon` | React × 1 | 已批准 |
 | `chart` | `ChartBarLineIcon` | React × 1 | 已批准 |
 | `check` | `CheckmarkCircle01Icon` | 04-cozy-ai × 2 | 已批准 |
-| `close` | `Cancel01Icon` | 04-cozy-ai × 1 | 已批准 |
-| `community` | `Orbit01Icon` | 04-cozy-ai × 1、React × 1 | 已批准 |
-| `edit` | `Edit02Icon` | 04-cozy-ai × 1 | 已批准 |
+| `close` | `Cancel01Icon` | 04-cozy-ai × 1、React × 2 | 已批准 |
+| `community` | `Orbit01Icon` | 04-cozy-ai × 1、06-partner-mode × 1、React × 4 | 已批准 |
+| `device` | `PackageIcon` | 06-partner-mode × 1 | 已批准 |
+| `edit` | `Edit02Icon` | 04-cozy-ai × 1、React × 1 | 已批准 |
 | `featured` | `Fire03Icon` | React × 1 | 已批准 |
 | `favorite` | `HeartIcon` | 04-cozy-ai × 1、React × 1 | 已批准 |
 | `help` | `HelpCircleIcon` | 01-user-guide × 1、React × 1 | 已批准 |
 | `history` | `HistoryIcon` | 04-cozy-ai × 1 | 已批准 |
-| `home` | `Home01Icon` | 04-cozy-ai × 1、React × 2 | 已批准 |
+| `home` | `Home01Icon` | 04-cozy-ai × 1、06-partner-mode × 1、React × 5 | 已批准 |
 | `info` | `InformationCircleIcon` | 04-cozy-ai × 1 | 已批准 |
 | `jump` | `ArrowUpRight01Icon` | 04-cozy-ai × 1 | 已批准 |
+| `language` | `TranslateIcon` | 暂未使用 | 已批准 |
 | `medicine` | `Medicine01Icon` | React × 1 | 已批准 |
 | `message` | `BubbleChatIcon` | React × 2 | 已批准 |
 | `notification` | `BellIcon` | React × 2 | 已批准 |
-| `package` | `PackageIcon` | 04-cozy-ai × 1、React × 1 | 已批准 |
-| `profile` | `UserIcon` | 04-cozy-ai × 1、React × 1 | 已批准 |
+| `package` | `PackageIcon` | 04-cozy-ai × 1、React × 3 | 已批准 |
+| `profile` | `UserIcon` | 04-cozy-ai × 1、06-partner-mode × 1、React × 3 | 已批准 |
 | `profileCircle` | `UserCircleIcon` | React × 1 | 已批准 |
 | `pump` | `MilkBottleIcon` | React × 1 | 已批准 |
 | `search` | `Search01Icon` | React × 1 | 已批准 |

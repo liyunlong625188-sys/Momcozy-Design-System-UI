@@ -1,0 +1,78 @@
+:root {
+  --momcozy-pumping-super-dark: oklch(0.232 0.093 13.403);
+  --momcozy-pumping-dark: oklch(0.364 0.142 16.176);
+  --momcozy-pumping-pink: oklch(0.777 0.099 10.847);
+  --momcozy-pumping-medium: oklch(0.868 0.074 7.086);
+  --momcozy-pumping-light: oklch(0.927 0.038 9.810);
+  --momcozy-pumping-super-light: oklch(0.983 0.009 8.541);
+  --momcozy-pumping-extension: oklch(0.969 0.074 101.080);
+
+  --momcozy-sleep-super-dark: oklch(0.179 0.100 292.750);
+  --momcozy-sleep-dark: oklch(0.408 0.162 296.339);
+  --momcozy-sleep-purple: oklch(0.585 0.136 296.852);
+  --momcozy-sleep-medium: oklch(0.701 0.114 295.090);
+  --momcozy-sleep-light: oklch(0.830 0.092 291.904);
+  --momcozy-sleep-super-light: oklch(0.966 0.017 293.143);
+  --momcozy-sleep-extension: oklch(0.889 0.080 315.400);
+
+  --momcozy-feeding-super-dark: oklch(0.264 0.054 166.611);
+  --momcozy-feeding-dark: oklch(0.393 0.065 169.187);
+  --momcozy-feeding-green: oklch(0.568 0.086 189.895);
+  --momcozy-feeding-medium: oklch(0.670 0.101 156.861);
+  --momcozy-feeding-light: oklch(0.878 0.076 146.610);
+  --momcozy-feeding-super-light: oklch(0.973 0.015 145.457);
+  --momcozy-feeding-extension: oklch(0.943 0.073 178.885);
+
+  --momcozy-recovery-super-dark: oklch(0.278 0.075 38.043);
+  --momcozy-recovery-dark: oklch(0.458 0.111 49.111);
+  --momcozy-recovery-gold: oklch(0.759 0.146 74.245);
+  --momcozy-recovery-medium: oklch(0.853 0.158 89.902);
+  --momcozy-recovery-light: oklch(0.943 0.115 99.171);
+  --momcozy-recovery-super-light: oklch(0.988 0.015 90.232);
+  --momcozy-recovery-extension: oklch(0.788 0.133 46.989);
+
+  --momcozy-font-heading: "Exposure[-10]", "Libre Baskerville", Georgia, serif;
+  --momcozy-font-body: "Aeonik Soft Pro", "Instrument Sans", Arial, sans-serif;
+
+  --momcozy-palette-primary: var(--momcozy-pumping-dark);
+  --momcozy-palette-primary-foreground: var(--momcozy-pumping-super-light);
+  --momcozy-palette-primary-muted: var(--momcozy-pumping-super-light);
+  --momcozy-palette-primary-accent: var(--momcozy-pumping-pink);
+
+  --momcozy-palette-sleep: var(--momcozy-sleep-dark);
+  --momcozy-palette-sleep-foreground: var(--momcozy-sleep-super-light);
+  --momcozy-palette-sleep-muted: var(--momcozy-sleep-super-light);
+  --momcozy-palette-sleep-accent: var(--momcozy-sleep-purple);
+
+  --momcozy-palette-feeding: var(--momcozy-feeding-dark);
+  --momcozy-palette-feeding-foreground: var(--momcozy-feeding-super-light);
+  --momcozy-palette-feeding-muted: var(--momcozy-feeding-super-light);
+  --momcozy-palette-feeding-accent: var(--momcozy-feeding-green);
+
+  --momcozy-palette-recovery: var(--momcozy-recovery-dark);
+  --momcozy-palette-recovery-foreground: var(--momcozy-recovery-super-light);
+  --momcozy-palette-recovery-muted: var(--momcozy-recovery-super-light);
+  --momcozy-palette-recovery-accent: var(--momcozy-recovery-gold);
+}
+
+.dark {
+  --momcozy-palette-primary: var(--momcozy-pumping-pink);
+  --momcozy-palette-primary-foreground: var(--momcozy-pumping-super-dark);
+  --momcozy-palette-primary-muted: var(--momcozy-pumping-super-dark);
+  --momcozy-palette-primary-accent: var(--momcozy-pumping-medium);
+
+  --momcozy-palette-sleep: var(--momcozy-sleep-light);
+  --momcozy-palette-sleep-foreground: var(--momcozy-sleep-super-dark);
+  --momcozy-palette-sleep-muted: var(--momcozy-sleep-super-dark);
+  --momcozy-palette-sleep-accent: var(--momcozy-sleep-medium);
+
+  --momcozy-palette-feeding: var(--momcozy-feeding-light);
+  --momcozy-palette-feeding-foreground: var(--momcozy-feeding-super-dark);
+  --momcozy-palette-feeding-muted: var(--momcozy-feeding-super-dark);
+  --momcozy-palette-feeding-accent: var(--momcozy-feeding-medium);
+
+  --momcozy-palette-recovery: var(--momcozy-recovery-light);
+  --momcozy-palette-recovery-foreground: var(--momcozy-recovery-super-dark);
+  --momcozy-palette-recovery-muted: var(--momcozy-recovery-super-dark);
+  --momcozy-palette-recovery-accent: var(--momcozy-recovery-medium);
+}
