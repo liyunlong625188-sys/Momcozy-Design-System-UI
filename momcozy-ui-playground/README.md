@@ -1,6 +1,6 @@
 # Momcozy UI Playground
 
-这是 Momcozy 3.0 token 驱动的 shadcn/ui 组件文档站与验收环境。左侧目录统一收纳 Skill、工程 Markdown、组件级 Showcase、完整产品 Demo 和组件清单；中间切换文档、真实页面 iframe 与组件 Gallery；右侧显示页内导航。组件源码由官方 CLI 生成，底层使用 Radix primitives；页面使用 React 19、Tailwind CSS 4 和 Vite。
+这是主 `momcozy-shadcn-design-system` Skill 的组件文档站与验收环境，不是仓库的主交付物。左侧目录统一收纳 Skill、工程 Markdown、组件级 Showcase、完整产品 Demo 和组件清单；中间切换文档、真实页面 iframe 与组件 Gallery；右侧显示页内导航。组件源码由官方 CLI 生成，底层使用 Radix primitives；页面使用 React 19、Tailwind CSS 4 和 Vite。
 
 ## 运行
 
