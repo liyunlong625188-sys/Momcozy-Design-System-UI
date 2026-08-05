@@ -1,90 +1,145 @@
-# Momcozy Design Token Demo
+# Momcozy Design System Skill
 
-这个工程是一个基于 Vite + React + shadcn/ui 组件结构的 Momcozy 移动端 demo。页面参考来自 Figma 的首页、设备、社区和我的四个 App 页面，视觉层接入 `momcozy-shadcn-design-system` skill 里的 Momcozy 3.0 light/dark token、Exposure[-10] 品牌字体和 Aeonik Soft Pro UI 字体。
+`momcozy-shadcn-design-system` 是本仓库的主交付物：一个可安装到 Codex 的 Momcozy 3.0 设计系统 Skill。它把 Light/Dark design tokens、品牌字体、shadcn/ui 语义映射、组件规则、Hugeicons 图标规范、产品 Demo 模式以及审计脚本组织成可执行的设计与前端工作流。
 
-## 运行
+> **仓库定位**：Skill 是核心；组件文档、Playground 和六个产品 Demo 是用于预览、验收与回归检查的配套环境。
+
+## 快速安装
+
+### 安装发布版 Skill
+
+当前发布包：[momcozy-shadcn-design-system-1.1.0.skill](releases/momcozy-design-system-kit-1.1.0/momcozy-shadcn-design-system-1.1.0.skill)
+
+1. 下载并在 Codex 中附加 `.skill` 文件。
+2. 对 Codex 说：`请安装这个 Skill。`
+3. 安装完成后使用 `$momcozy-shadcn-design-system` 明确调用。
+
+也可以把 `.skill` 文件作为 ZIP 解压到：
+
+```text
+~/.codex/skills/momcozy-shadcn-design-system/
+```
+
+该目录下必须直接存在 `SKILL.md`。
+
+### 使用仓库中的最新源码
+
+Skill 源码位于：
+
+```text
+skills/momcozy-shadcn-design-system/
+├── SKILL.md
+├── assets/
+├── references/
+└── scripts/
+```
+
+需要使用仓库工作版本时，将这个完整目录复制到 Codex 的 skills 目录；不要只复制 `SKILL.md`，否则 token、字体、参考规则和审计脚本会缺失。
+
+## Skill 能做什么
+
+- 使用 Momcozy 3.0 Light/Dark tokens 生成或改造界面。
+- 把 Momcozy token 映射为稳定的 shadcn/ui 语义变量。
+- 按组件规则实现 Button、Input、Dialog、Tabs、Card 等 React UI。
+- 通过统一语义注册表使用 Hugeicons，避免页面内散落临时图标。
+- 生成智能母婴硬件、设备管理、护理指导、家庭健康和社区互动场景。
+- 审计 token 覆盖、主题映射、组件状态与图标使用情况。
+- 为设计评审、前端实现、升级验收和跨产品复用提供同一套规则来源。
+
+## 调用示例
+
+```text
+使用 $momcozy-shadcn-design-system，基于 Momcozy 3.0 tokens
+设计一个智能吸奶器设备详情页，支持 Light/Dark Mode。
+```
+
+```text
+使用 $momcozy-shadcn-design-system，把这个 React 页面中的颜色、文字、
+间距、圆角和按钮状态替换为 Momcozy semantic tokens。
+```
+
+```text
+使用 $momcozy-shadcn-design-system，检查这个新 Demo 的图标候选，
+先生成审查清单，不要直接加入正式图标规范。
+```
+
+## 仓库分层
+
+| 层级 | 位置 | 作用 |
+| --- | --- | --- |
+| 主 Skill | `skills/momcozy-shadcn-design-system/` | 保存 tokens、字体、映射规则、组件规则、生成脚本与审计脚本 |
+| 可安装发布包 | `releases/` | 提供可直接安装到 Codex 的版本化 `.skill` 文件 |
+| 组件文档与 Playground | `momcozy-ui-playground/` | 展示组件、安装方式、API、Light/Dark 状态和设计验收结果 |
+| 产品 Demo | `public/demos/` | 验证完整产品场景、交互流程和主题同步 |
+| 组件源码 | `src/components/` | 保存 Momcozy 定制组件和共享实现 |
+| 审查文档 | `docs/` | 保存组件边界、设计验收和工程说明 |
+
+Skill 与 Playground 分层维护：Skill 保存可迁移的设计决策和执行规则；Playground 消费同一份主题资源并提供可视化验收，不是 Skill 的替代品。
+
+## 在线文档
+
+GitHub Pages：<https://liyunlong625188-sys.github.io/Momcozy-Design-System-UI/>
+
+文档站包含：
+
+- Skill 指令与使用说明
+- Token 映射、色彩、字体、组件与图标规则
+- Momcozy 定制组件和 shadcn/ui 组件文档
+- 六个产品 Demo
+- Light/Dark 与中英文预览
+- 设计审查和验收记录
+
+## 本地运行文档与 Playground
 
 ```bash
 pnpm install
-pnpm demo
+pnpm components:dev
 ```
 
-完整 shadcn/ui 组件总览是独立的 Vite playground，避免覆盖主 Demo 中已经定制的组件：
+开发预览：<http://127.0.0.1:5180/>
+
+生产构建：
 
 ```bash
-pnpm components:dev
 pnpm components:build
 ```
 
-开发预览为 `http://127.0.0.1:5180/`；生产 HTML 输出到 `momcozy-ui-playground/dist/index.html`。
+生成文件输出到 `momcozy-ui-playground/dist/`。`main` 分支更新后，`.github/workflows/deploy-pages.yml` 会自动构建并发布 GitHub Pages。
 
-## GitHub Pages 部署
+## 产品 Demo
 
-组件文档站通过 `.github/workflows/deploy-pages.yml` 自动部署到：
+Demo 是 Skill 的场景验证资产，不是仓库的主交付物。
 
-`https://liyunlong625188-sys.github.io/Momcozy-Design-System-UI/`
+| 编号 | Demo | 静态源码 |
+| --- | --- | --- |
+| 01 | User Guide | `public/demos/01-user-guide/` |
+| 02 | Group Pumping Community | `public/demos/02-group-pumping/` |
+| 03 | Voice Log | `public/demos/03-voice-log/` |
+| 04 | Cozy AI | `public/demos/04-cozy-ai/` |
+| 05 | AI Lactation Plan | `public/demos/05-ai-lactation-plan/` |
+| 06 | Partner Mode | `public/demos/06-partner-mode/` |
 
-工作流会在 `main` 分支更新后安装 `momcozy-ui-playground` 的依赖、以 `/Momcozy-Design-System-UI/` 为基础路径构建，并发布 `momcozy-ui-playground/dist`。首次推送后，需要在 GitHub 仓库的 **Settings → Pages** 中把 Source 设为 **GitHub Actions**。
-
-本地预览地址：
-
-```text
-Demo 目录：http://127.0.0.1:5177/demos
-组件目录：http://127.0.0.1:5177/components
-App 壳：http://127.0.0.1:5177/
-Demo 01：http://127.0.0.1:5177/guide
-Demo 02：http://127.0.0.1:5177/group-pumping
-Demo 03：http://127.0.0.1:5177/voice-log
-Demo 04：http://127.0.0.1:5177/cozy-ai
-
-Demo 05：http://127.0.0.1:5177/ai-lactation-plan
-
-Demo 06：http://127.0.0.1:5177/partner-mode
-```
-
-其中 `/` 是 React + shadcn/ui 的 App 壳；`/demos` 只列产品 Demo，`/components` 只列可复用组件展示。组件规范与项目目录的分层说明见 `docs/component-library.md`。
-
-| 编号 | Demo | 预览路由 | 静态源码 |
-| --- | --- | --- | --- |
-| 01 | User Guide | `/guide` | `public/demos/01-user-guide/` |
-| 02 | Group Pumping Community | `/group-pumping` | `public/demos/02-group-pumping/` |
-| 03 | Voice Log | `/voice-log` | `public/demos/03-voice-log/` |
-| 04 | Cozy AI | `/cozy-ai` | `public/demos/04-cozy-ai/` |
-| 05 | AI Lactation Plan | `/ai-lactation-plan` | `public/demos/05-ai-lactation-plan/` |
-| 06 | Partner Mode | `/partner-mode` | `public/demos/06-partner-mode/` |
-
-更新 `src/styles/momcozy-theme.css` 后，运行下面命令同步给静态 User Guide iframe：
-
-```bash
-pnpm sync:guide-theme
-```
-
-## 结构
-
-- `src/styles/momcozy-theme.css`：Momcozy token 与 shadcn 语义变量。
-- `src/components/ui/`：轻量 shadcn/ui 风格组件壳，当前包含 Button、Card、Badge。
-- `momcozy-ui-playground/`：官方 shadcn/ui 全量源码与组件总览；直接引用主工程 token 源，包含 Light / Dark 主题。
-- `src/App.tsx`：首页、设备页、社区页、我的页，以及四个独立 Demo 的预览入口。
-- `src/App.css`：页面布局、组件状态和 Figma 画布适配，颜色/文字/圆角/间距尽量使用 token。
-- `public/fonts/`：Exposure[-10] 与 Aeonik Soft Pro 字体资源。
-- `public/figma/`：从 Figma 下载或裁切的页面资产。
-- `public/figma/references/`：Figma 原图参考截图和本地 demo 截图。
-- `public/demos/01-user-guide/`：User Guide 静态 Demo，已将基础颜色、字体、圆角、间距、按钮和阴影映射到 Momcozy token。
-- `public/demos/02-group-pumping/`：社区、群组列表和详情页 Demo，使用主题桥接同步 Light/Dark Mode。
-- `public/demos/03-voice-log/`：Voice Log 完整交互 Demo。代码生成的弹层、文字、按钮、边框、状态与控制面板使用 Momcozy semantic tokens；UI 型 PNG 切片随主题适配，照片与设备外框保持原始影像。
-- `public/demos/04-cozy-ai/`：从 CozyAI Next.js 工程提取的无密钥交互演示，保留首次同意、对话、快捷问题、计划卡、历史抽屉和五栏导航。
-- `public/demos/05-ai-lactation-plan/`：Cozy AI 吸乳计划 Skill 的独立交互交付稿。
-- `public/demos/06-partner-mode/`：Partner Mode 邀请人与共享照护流程交付稿。
-- `public/demos/README.md`：六个 Demo 的编号、入口、职责和共享资源说明。
-- `scripts/sync-user-guide-theme.mjs`：把主 token 文件同步到静态 User Guide，避免 iframe 内主题副本漂移。
+六个 Demo 通过共享桥接同步 Light/Dark 和中英文状态，完整说明见 [public/demos/README.md](public/demos/README.md)。
 
 ## 验证
-
-已执行：
 
 ```bash
 pnpm lint
 pnpm build
+pnpm components:build
+pnpm icons:audit
 ```
 
-另外用本地浏览器检查 `/guide`、`/group-pumping`、`/voice-log`、`/cozy-ai`、`/ai-lactation-plan` 与 `/partner-mode`，确认六个示例的路由、资源和核心交互正常。
+Token 与主题资源发生变化时，还应运行 Skill 中的审计脚本：
+
+```bash
+python3 skills/momcozy-shadcn-design-system/scripts/audit_tokens.py
+```
+
+## 使用边界
+
+- Skill 保存设计规则和工程映射，不在 Skill 目录内安装 shadcn/ui 或维护 `node_modules`。
+- 只有目标前端项目需要组件时，才在该项目中初始化或接入 shadcn/ui。
+- 原始 Momcozy variables 与 shadcn 语义变量保持分层，不把 token 硬编码进每个组件。
+- 新图标先进入审查清单，经过确认后才能加入正式语义注册表。
+- Exposure[-10] 与 Aeonik Soft Pro 字体默认仅用于 Momcozy 内部产品、设计和研发协作，请遵守现有字体授权范围。

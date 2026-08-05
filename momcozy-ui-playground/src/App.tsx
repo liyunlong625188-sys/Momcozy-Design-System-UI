@@ -113,31 +113,6 @@ const chartConfig = {
   sessions: { label: "Sessions", color: "var(--chart-1)" },
 } satisfies ChartConfig
 
-const catalogue = {
-  en: [
-    ["forms", "Forms", "Inputs, choices, field composition and date selection"],
-    ["navigation", "Navigation", "Wayfinding, grouping and application structure"],
-    ["overlays", "Overlays", "Menus, dialogs, drawers, sheets and contextual layers"],
-    ["data", "Data", "Tables, progress, charts, scroll and resize patterns"],
-    ["messaging", "Messaging", "Chat bubbles, messages, attachments and markers"],
-  ],
-  zh: [
-    ["forms", "表单", "输入、选项、字段组合与日期选择"],
-    ["navigation", "导航", "路径引导、内容分组与应用结构"],
-    ["overlays", "浮层", "菜单、对话框、抽屉、侧边弹层与上下文层"],
-    ["data", "数据", "表格、进度、图表、滚动与尺寸调整模式"],
-    ["messaging", "消息", "聊天气泡、消息、附件与标记"],
-  ],
-}
-
-const catalogueTargets = {
-  forms: "input",
-  navigation: "tabs",
-  overlays: "dialog",
-  data: "table",
-  messaging: "message",
-} as const
-
 // Kept only as an opt-in development reference. The public catalogue uses the
 // compact card index and dedicated component pages instead of one long gallery.
 const legacyGalleryEnabled = new URLSearchParams(window.location.search).get("legacy-gallery") === "1"
@@ -365,46 +340,63 @@ function LocalizedGallery({ locale, children }: { locale: Locale; children: Reac
 }
 
 const markdownEntries = [
-  { id: "skill", label: { en: "Skill Instructions", zh: "Skill 指令" }, description: { en: "Codex usage model and workflow", zh: "Codex 使用模型与工作流" }, content: skillMarkdown },
+  { id: "skill", label: { en: "Skill Instructions", zh: "Skill 指令" }, description: { en: "AI Agent usage model and workflow", zh: "AI Agent 使用模型与工作流" }, content: skillMarkdown },
   { id: "start-here", label: { en: "Start Here", zh: "快速开始" }, description: { en: "Project entry point and recommended reading order", zh: "设计系统工程入口与使用顺序" }, content: startHereMarkdown },
-  { id: "component-library", label: { en: "Component Library", zh: "组件库说明" }, description: { en: "Architecture layers and component boundaries", zh: "工程分层与组件边界" }, content: componentLibraryMarkdown },
+  { id: "component-library", label: { en: "Component Library Layers", zh: "Component Library 分层" }, description: { en: "Architecture layers and component boundaries", zh: "工程分层与组件边界" }, content: componentLibraryMarkdown },
   { id: "token-mapping", label: { en: "Token Mapping", zh: "Token 映射" }, description: { en: "Figma tokens mapped to the shadcn semantic layer", zh: "Figma Token 到 shadcn 语义层" }, content: tokenMarkdown },
   { id: "color-system", label: { en: "Color System", zh: "色彩系统" }, description: { en: "Grays, product-line colors, and status colors", zh: "Grays、产品线色与状态色" }, content: colorMarkdown },
   { id: "foundation-tokens", label: { en: "Foundation Tokens", zh: "基础 Token" }, description: { en: "Spacing, radii, shadows, and states", zh: "间距、圆角、阴影与状态" }, content: foundationMarkdown },
   { id: "typography", label: { en: "Typography", zh: "字体规范" }, description: { en: "Exposure and Aeonik Soft Pro usage", zh: "Exposure 与 Aeonik Soft Pro 使用规范" }, content: typographyMarkdown },
   { id: "component-rules", label: { en: "Component Rules", zh: "组件规则" }, description: { en: "Component implementation and interaction rules", zh: "组件实现与交互规则" }, content: componentRulesMarkdown },
   { id: "icon-system", label: { en: "Icon System", zh: "图标系统" }, description: { en: "Hugeicons rules, approved catalog, and pending decisions", zh: "Hugeicons 规则、已批准目录与待决策项" }, content: `${iconMarkdown}\n\n---\n\n${iconCatalogMarkdown}` },
-  { id: "demo-patterns", label: { en: "Demo Patterns", zh: "Demo 模式" }, description: { en: "Patterns for IoT, content, and community demos", zh: "IoT、内容与社区 Demo 模式" }, content: demoPatternsMarkdown },
+  { id: "demo-patterns", label: { en: "Demo Generation Patterns", zh: "Demo 生成模式" }, description: { en: "Patterns for IoT, content, and community demos", zh: "IoT、内容与社区 Demo 模式" }, content: demoPatternsMarkdown },
   { id: "shadcn-integration", label: { en: "shadcn/ui Integration", zh: "shadcn/ui 集成" }, description: { en: "Playground, starter, and registry strategy", zh: "Playground、Starter 与 Registry 策略" }, content: integrationMarkdown },
   { id: "status-color", label: { en: "Status Color Extraction", zh: "状态色提取" }, description: { en: "Status-color extraction and semantic mapping", zh: "状态色变量提取与语义映射" }, content: statusColorMarkdown },
   { id: "dark-mode", label: { en: "Dark Mode Recommendations", zh: "深色模式建议" }, description: { en: "App 3.0 dark-mode audit and recommendations", zh: "App 3.0 深色模式评估与建议" }, content: darkModeRecommendationMarkdown },
   { id: "color-token-review", label: { en: "Color Token Review", zh: "颜色 Token 审查" }, description: { en: "Color-token update review", zh: "颜色 Token 更新审查记录" }, content: colorTokenReviewMarkdown },
-  { id: "demo-readme", label: { en: "Demo README", zh: "Demo 说明" }, description: { en: "Demo directory and run instructions", zh: "Demo 目录与运行说明" }, content: demoReadmeMarkdown },
+  { id: "demo-readme", label: { en: "Demo Run Guide", zh: "Demo 运行说明" }, description: { en: "Demo directory and run instructions", zh: "Demo 目录与运行说明" }, content: demoReadmeMarkdown },
   { id: "ai-plan-icons", label: { en: "AI Plan Icon Review", zh: "AI 计划图标审查" }, description: { en: "AI Lactation Plan icon review", zh: "AI Lactation Plan 图标审查" }, content: aiPlanIconReviewMarkdown },
   { id: "partner-mode-icons", label: { en: "Partner Mode Icon Review", zh: "伴侣模式图标审查" }, description: { en: "Partner Mode icon review", zh: "Partner Mode 图标审查" }, content: partnerModeIconReviewMarkdown },
   { id: "root-design-qa", label: { en: "Root Design QA", zh: "主工程设计验收" }, description: { en: "Main project visual QA record", zh: "主工程视觉验收记录" }, content: rootDesignQaMarkdown },
-  { id: "playground-readme", label: { en: "Playground README", zh: "Playground 说明" }, description: { en: "Component documentation site run instructions", zh: "组件文档站运行说明" }, content: playgroundReadmeMarkdown },
+  { id: "playground-readme", label: { en: "Playground Run Guide", zh: "Playground 运行说明" }, description: { en: "Component documentation site run instructions", zh: "组件文档站运行说明" }, content: playgroundReadmeMarkdown },
   { id: "playground-qa", label: { en: "Playground Design QA", zh: "Playground 设计验收" }, description: { en: "Component documentation site visual QA record", zh: "组件文档站视觉验收记录" }, content: playgroundQaMarkdown },
-  { id: "project-readme", label: { en: "Project README", zh: "项目说明" }, description: { en: "Repository runtime and directory guide", zh: "仓库运行与目录说明" }, content: projectReadmeMarkdown },
+  { id: "project-readme", label: { en: "Repository Engineering Guide", zh: "仓库工程说明" }, description: { en: "Repository runtime and directory guide", zh: "仓库运行与目录说明" }, content: projectReadmeMarkdown },
 ]
 
 const markdownEntriesById = new Map(markdownEntries.map((entry) => [entry.id, entry]))
 
 const markdownNavigationGroups = [
   {
-    id: "design-foundations",
-    label: { en: "Design Foundations", zh: "设计基础" },
+    id: "design-rules",
+    label: { en: "Design Rules", zh: "设计规则" },
     entryIds: ["token-mapping", "color-system", "foundation-tokens", "typography", "component-rules", "icon-system"],
   },
   {
-    id: "usage-and-engineering",
-    label: { en: "Usage & Engineering", zh: "使用与工程" },
-    entryIds: ["skill", "start-here", "component-library", "demo-patterns", "demo-readme", "playground-readme", "project-readme"],
+    id: "engineering-integration",
+    label: { en: "Engineering Integration", zh: "工程接入" },
+    entryIds: ["shadcn-integration", "component-library", "playground-readme", "project-readme"],
+  },
+] as const
+
+const catalogNavigationEntries = [
+  { id: "introduction", label: { en: "Skill Overview", zh: "Skill 介绍" } },
+] as const
+
+const governanceNavigationSections = [
+  {
+    id: "token-theme-reviews",
+    label: { en: "Token & Dark Mode Reviews", zh: "Token 与深色模式审查" },
+    entryIds: ["status-color", "dark-mode", "color-token-review"],
   },
   {
-    id: "reviews",
-    label: { en: "Reviews", zh: "审查记录" },
-    entryIds: ["status-color", "dark-mode", "color-token-review", "ai-plan-icons", "partner-mode-icons", "root-design-qa", "playground-qa"],
+    id: "icon-reviews",
+    label: { en: "Icon Reviews", zh: "图标审查" },
+    entryIds: ["ai-plan-icons", "partner-mode-icons"],
+  },
+  {
+    id: "quality-assurance",
+    label: { en: "Main Project & Playground QA", zh: "主工程与 Playground QA" },
+    entryIds: ["root-design-qa", "playground-qa"],
   },
 ] as const
 
@@ -417,8 +409,80 @@ const demoEntries = [
   { id: "partner-mode", label: { en: "Partner Mode", zh: "伴侣模式" }, path: `${import.meta.env.BASE_URL}demos/06-partner-mode/index.html` },
 ]
 
+type SkillContentMapAction = {
+  type: "catalog" | "markdown" | "demo"
+  id: string
+}
+
+const skillContentMap = [
+  {
+    id: "getting-started",
+    title: { en: "Start Using the Skill", zh: "开始使用 Skill" },
+    items: [
+      { label: { en: "Skill overview", zh: "Skill 介绍" }, action: { type: "catalog", id: "introduction" } },
+      { label: { en: "Install the Skill", zh: "安装 Skill" }, action: { type: "catalog", id: "installation" } },
+      { label: { en: "First invocation", zh: "第一次调用" }, action: { type: "catalog", id: "first-use" } },
+      { label: { en: "Usage workflow", zh: "使用流程" }, action: { type: "catalog", id: "workflow" } },
+      { label: { en: "Package structure and purpose", zh: "包结构与作用" }, action: { type: "catalog", id: "structure" } },
+      { label: { en: "Compatibility and boundaries", zh: "兼容性与使用边界" }, action: { type: "catalog", id: "boundaries" } },
+    ],
+  },
+  {
+    id: "design-rules",
+    title: { en: "Design Rules", zh: "设计规则" },
+    items: [
+      { label: { en: "Token mapping", zh: "Token 映射" }, action: { type: "markdown", id: "token-mapping" } },
+      { label: { en: "Color system", zh: "色彩系统" }, action: { type: "markdown", id: "color-system" } },
+      { label: { en: "Foundation tokens", zh: "基础 Token" }, action: { type: "markdown", id: "foundation-tokens" } },
+      { label: { en: "Typography", zh: "字体规范" }, action: { type: "markdown", id: "typography" } },
+      { label: { en: "Component rules", zh: "组件规则" }, action: { type: "markdown", id: "component-rules" } },
+      { label: { en: "Icon system", zh: "图标系统" }, action: { type: "markdown", id: "icon-system" } },
+    ],
+  },
+  {
+    id: "engineering",
+    title: { en: "Engineering Integration", zh: "工程接入" },
+    items: [
+      { label: { en: "shadcn/ui integration", zh: "shadcn/ui 集成" }, action: { type: "markdown", id: "shadcn-integration" } },
+      { label: { en: "Component Library layers", zh: "Component Library 分层" }, action: { type: "markdown", id: "component-library" } },
+      { label: { en: "Playground run guide", zh: "Playground 运行说明" }, action: { type: "markdown", id: "playground-readme" } },
+      { label: { en: "Repository engineering guide", zh: "仓库工程说明" }, action: { type: "markdown", id: "project-readme" } },
+    ],
+  },
+  {
+    id: "scenarios",
+    title: { en: "Scenario Validation", zh: "场景验证" },
+    items: [
+      { label: { en: "Demo generation patterns", zh: "Demo 生成模式" }, action: { type: "markdown", id: "demo-patterns" } },
+      { label: { en: "Demo run guide", zh: "Demo 运行说明" }, action: { type: "markdown", id: "demo-readme" } },
+      { label: { en: "6 product demos", zh: "6 个产品 Demo" }, action: { type: "demo", id: "user-guide" } },
+    ],
+  },
+  {
+    id: "governance",
+    title: { en: "Governance and Acceptance", zh: "治理与验收" },
+    items: [
+      { label: { en: "Token and Dark Mode review", zh: "Token 与深色模式审查" }, action: { type: "markdown", id: "dark-mode" } },
+      { label: { en: "Icon review", zh: "图标审查" }, action: { type: "markdown", id: "ai-plan-icons" } },
+      { label: { en: "Main project and Playground QA", zh: "主工程与 Playground QA" }, action: { type: "markdown", id: "root-design-qa" } },
+    ],
+  },
+  {
+    id: "components",
+    title: { en: "Component Directory", zh: "组件目录" },
+    items: [
+      { label: { en: "5 Momcozy components", zh: "Momcozy 定制组件 5" }, action: { type: "catalog", id: "component-gallery" } },
+      { label: { en: "64 shadcn/ui components", zh: "shadcn/ui 组件 64" }, action: { type: "catalog", id: "component-gallery" } },
+    ],
+  },
+] satisfies Array<{
+  id: string
+  title: Record<Locale, string>
+  items: Array<{ label: Record<Locale, string>; action: SkillContentMapAction }>
+}>
+
 type LibraryView =
-  | { type: "catalog" }
+  | { type: "catalog"; target?: string }
   | { type: "markdown"; id: string }
   | { type: "component"; slug: string }
   | { type: "demo"; id: string }
@@ -433,12 +497,12 @@ function postDemoSettings(target: Window | null, settings: { theme: DemoTheme; l
 
 const uiCopy = {
   en: {
-    librarySubtitle: "Design system library",
+    librarySubtitle: "Skill & component library",
     libraryNavigation: "Library navigation",
     closeNavigation: "Close navigation",
     openNavigation: "Open navigation",
     sections: "Sections",
-    introduction: "Introduction",
+    introduction: "Skill Overview",
     components: "Components",
     installation: "Installation",
     framework: "Framework",
@@ -448,7 +512,7 @@ const uiCopy = {
     skillAndMarkdown: "Skill & Markdown",
     demos: "Demos",
     componentGallery: "Component Gallery",
-    componentCount: "70 components",
+    componentCount: "69 components",
     switchLanguage: "切换为中文",
     toggleColorMode: "Toggle color mode",
     interactiveDemo: "Interactive Demo",
@@ -459,16 +523,16 @@ const uiCopy = {
     markdownSource: "Markdown source",
     preview: "Preview",
     interactiveScenario: "Interactive scenario",
-    tokenFirstLibrary: "Token-first UI library",
-    sourceNote: "Skills, documents, demos, and component source share one theme source of truth.",
+    tokenFirstLibrary: "Executable design-system Skill",
+    sourceNote: "Rules, assets, scripts, demos, and components share one Momcozy source of truth.",
   },
   zh: {
-    librarySubtitle: "设计系统组件库",
+    librarySubtitle: "设计系统 Skill 与组件库",
     libraryNavigation: "组件库导航",
     closeNavigation: "关闭导航",
     openNavigation: "打开导航",
     sections: "导航",
-    introduction: "介绍",
+    introduction: "Skill 介绍",
     components: "组件",
     installation: "安装",
     framework: "技术框架",
@@ -478,7 +542,7 @@ const uiCopy = {
     skillAndMarkdown: "Skill 与 Markdown",
     demos: "产品场景",
     componentGallery: "组件总览",
-    componentCount: "70 个组件",
+    componentCount: "69 个组件",
     switchLanguage: "Switch to English",
     toggleColorMode: "切换深浅色模式",
     interactiveDemo: "交互 Demo",
@@ -489,105 +553,197 @@ const uiCopy = {
     markdownSource: "Markdown 源文件",
     preview: "预览",
     interactiveScenario: "交互场景",
-    tokenFirstLibrary: "Token 优先的 UI 组件库",
-    sourceNote: "Skill、文档、Demo 与组件源码使用同一份主题事实源。",
+    tokenFirstLibrary: "可执行的设计系统 Skill",
+    sourceNote: "规则、资产、脚本、Demo 与组件共享同一份 Momcozy 事实源。",
   },
 } as const
 
 const introductionCopy = {
   en: {
-    eyebrow: "Momcozy 3.0 · Component documentation and acceptance environment",
+    eyebrow: "Momcozy 3.0 · Agent Skill",
     title: "From design rules to deliverable assets",
-    lead: "Momcozy UI is a token-first component system for design review, frontend implementation, upgrade auditing, and cross-product reuse. It connects Figma variables, implementation rules, runnable components, and product demos in one inspectable workspace.",
-    deliveryFlowLabel: "From design rules to delivery",
-    deliveryFlow: ["Design rules", "Token / Skill", "Components", "Product validation", "Audit", "Release kit"],
-    layersTitle: "Five connected layers",
-    layers: [
-      ["Design rules", "The Momcozy Skill contains Light/Dark tokens, fonts, shadcn/ui mappings, component rules, scenario patterns, and audit scripts. Grays remain the default neutral system; Mom, Care, Parenting, and Family are used only with explicit product-line ownership."],
-      ["Frontend implementation", "The root React + Vite application provides the Momcozy App preview shell, Light/Dark switching, component entry points, and Demo hosting."],
-      ["Component library", "The component library includes five Momcozy components: Toolbar Top, Toolbar Top Sheet, Liquid Glass Button, Title, and Tab Bar. The complete playground currently documents 69 component entries."],
-      ["Product demos", "The Demo Library includes six complete scenarios: User Guide, Group Pumping Community, Voice Log, Cozy AI, AI Lactation Plan, and Partner Mode. These validate complete flows, interaction, and theme behavior—not component appearance alone."],
-      ["Governance and delivery", "Hugeicons semantics, icon candidate review, token audits, and visual QA are managed together. Versioned releases provide an installable .skill, editable Demo ZIP, and checksum files."],
+    lead: "momcozy-shadcn-design-system is a design-system execution package built on the open Agent Skills standard. It lets AI agents that support Skills load Momcozy tokens, components, icon rules, and verification workflows, then turn a request into reusable design, code, and review deliverables.",
+    positioningNote: "The current installation and invocation flow is designed for ChatGPT/Codex. Other agents that support the Agent Skills standard can reuse the core package, but their installation method and compatibility must be validated separately.",
+    installAction: "Install the Skill",
+    workflowAction: "See how it works",
+    mapEyebrow: "Content map",
+    mapTitle: "What is inside this Skill",
+    mapLead: "Six areas cover setup, design rules, engineering integration, components, scenario validation, and governance.",
+    useCasesEyebrow: "Before you install",
+    useCasesTitle: "What can you use it for?",
+    useCasesLead: "Use the Skill when a task needs Momcozy-specific decisions, not merely a generic interface.",
+    useCases: [
+      ["Design and UX", "Turn a brief or existing screen into a token-based specification, review UI consistency, or explore a Momcozy product direction."],
+      ["Frontend implementation", "Build or refactor React interfaces with Momcozy semantic tokens, shadcn/ui primitives, Light/Dark behavior, and shared Hugeicons."],
+      ["Product demos", "Create complete IoT, device, care, family health, content, or community scenarios instead of isolated component samples."],
+      ["Design-system governance", "Audit token coverage, theme mappings, component states, and icon candidates before changes enter the shared system."],
     ],
-    problemsTitle: "Three problems this workspace solves",
-    problems: [
-      ["Executable tokens", "Figma tokens become usable CSS, shadcn/ui semantics, and React implementation rules instead of remaining design-file variables."],
-      ["Consistent generation", "Codex and developers share one set of constraints, reducing drift in color, typography, radius, icons, and component usage."],
-      ["Verified reuse", "Component pages test whether an asset is reusable; product Demos test whether it still works inside a complete flow; release kits make the result shareable."],
+    workflowEyebrow: "User workflow",
+    workflowTitle: "From your request to a verified result",
+    workflowLead: "You describe the outcome. The Skill supplies the Momcozy context, decision rules, and checks that the AI agent should follow.",
+    workflowSteps: [
+      ["Give the AI agent the task", "Share a brief, screenshot, Figma link, codebase, or the component you want to create or review."],
+      ["Load only the relevant rules", "The AI agent reads the Skill entrypoint, then loads the references needed for this task—such as color, typography, components, icons, or demos."],
+      ["Inspect the current context", "Before editing, the AI agent checks the existing stack, theme, components, and visual baseline so the result fits the project."],
+      ["Map decisions to the system", "Colors, typography, spacing, radius, states, components, and icons are mapped to Momcozy semantics instead of improvised values."],
+      ["Create or update the deliverable", "The AI agent produces the requested design specification, code, theme CSS, component, demo, or review document."],
+      ["Verify and report", "Relevant audits, builds, interactions, and visual checks run before the AI agent reports what changed, what passed, and what still needs a decision."],
     ],
-    frameworkTitle: "Built on an open, editable frontend stack",
-    frameworkLead: "The implementation keeps component ownership inside the project while Momcozy tokens remain the visual source of truth.",
-    frameworks: [
-      ["React 19 + TypeScript", "Runtime composition, typed APIs, and maintainable component contracts."],
-      ["shadcn/ui + Radix UI", "Editable component source and accessible interaction primitives instead of a closed dependency."],
-      ["Tailwind CSS 4", "Semantic utilities, component states, responsive layouts, and theme integration."],
-      ["Momcozy 3.0 tokens", "Light/Dark color roles, product-line semantics, typography, spacing, radius, and focus states."],
-      ["Hugeicons", "One semantic icon language for controls, navigation, and product feedback."],
-      ["Codex Skill + Markdown", "Machine-executable rules and human-reviewable design-system documentation."],
+    installationEyebrow: "Fastest installation",
+    installationTitle: "One prompt in Codex",
+    installationLead: "You do not need to clone the repository, unzip files, or install shadcn/ui first. Paste the prompt below into Codex; the built-in installer downloads the complete Skill directory for you.",
+    installRequirement: "You only need Codex and access to the company GitHub repository.",
+    installPromptLabel: "Copy this into Codex",
+    installPrompt: "Please install the Skill from https://github.com/liyunlong625188-sys/Momcozy-Design-System-UI/tree/main/skills/momcozy-shadcn-design-system",
+    copyInstall: "Copy install prompt",
+    copied: "Copied",
+    copyFailed: "Could not copy. Select the text and copy it manually.",
+    installSteps: [
+      ["Open Codex", "Start any task where you can send a message."],
+      ["Paste the install prompt", "Codex installs the entire folder into your personal skills directory. Wait for the installation confirmation."],
+      ["Use it on the next turn", "Explicitly mention $momcozy-shadcn-design-system when you want to guarantee that the Skill is used."],
     ],
-    valueTitle: "Why it matters",
+    firstUseLabel: "Recommended first request",
+    firstUsePrompt: "Use $momcozy-shadcn-design-system. First explain which Momcozy rules you will load, then create a smart breast-pump device detail page with Light and Dark modes.",
+    copyFirstUse: "Copy first request",
+    installVerify: "Installation is successful when Codex confirms the install and can use $momcozy-shadcn-design-system on the next turn. If it does not appear, start a new task or restart Codex once.",
+    installAlternative: "If GitHub access is unavailable, attach the internally shared .skill file and say “Please install this Skill.” Manual folder copying is only a fallback.",
+    structureEyebrow: "Inside the Skill",
+    structureTitle: "Five parts, each with one job",
+    structureLead: "The package uses progressive disclosure: the AI agent starts from the entrypoint and reads deeper references or runs scripts only when the task requires them.",
+    structureItems: [
+      ["SKILL.md", "The operating entrypoint. It defines when the Skill should be used, which references to load, the execution order, and the boundaries the AI agent must respect."],
+      ["references/", "Human-readable rules for tokens, colors, typography, components, icons, shadcn/ui integration, and product-demo patterns."],
+      ["assets/", "The source assets: Light/Dark token exports, generated semantic theme CSS, and Momcozy brand and UI fonts."],
+      ["scripts/", "Repeatable theme generation and audit tools for token coverage, unresolved references, icon use, and candidate review."],
+      ["agents/", "Display metadata and a default prompt that help a compatible host identify and present the Skill correctly."],
+    ],
+    outcomesEyebrow: "What you get",
+    outcomesTitle: "Deliverables you can continue using",
+    outcomesLead: "The exact output follows your request. A single task may return one or several of these deliverables.",
+    outcomes: [
+      ["A Momcozy-aligned design result", "Page structure, states, copy hierarchy, Light/Dark behavior, and product-line semantics grounded in the current system."],
+      ["Editable implementation assets", "React components, page code, semantic CSS, token mappings, or a runnable product demo inside your project."],
+      ["A review and decision record", "Token gaps, icon candidates, component exceptions, risks, and items that still require design-system approval."],
+      ["Visible verification evidence", "Build, audit, interaction, or visual-QA results, with clear separation between what passed and what remains unverified."],
+    ],
+    valueTitle: "Why teams use it",
     values: [
-      ["One source of truth", "Figma tokens, semantic CSS, component previews, and usage documentation follow the same theme contract."],
-      ["Design-to-code consistency", "Designers and developers can review the same states, variants, responsive behavior, and accessibility expectations."],
-      ["Reusable without losing ownership", "Teams copy the component source they need and can adapt it without waiting for a vendor package release."],
-      ["Safer upgrades", "The Playground makes token changes, shadcn updates, Light/Dark behavior, and regression risks visible before product adoption."],
+      ["Less repeated explanation", "The team installs the design-system context once instead of restating colors, typography, components, and icon rules in every prompt."],
+      ["More consistent output", "Designers, developers, and the AI agent work from the same semantic contract, reducing one-off values and implementation drift."],
+      ["Decisions stay traceable", "Rules live in readable Markdown; transformations and audits live in scripts, so results can be inspected and repeated."],
+      ["Safer evolution", "Token, icon, and component changes pass through explicit checks and review gates before they become shared conventions."],
     ],
-    architectureTitle: "How the system connects",
-    architectureLead: "Each layer has one responsibility, so token changes do not get hard-coded into every product component.",
-    architectureSteps: ["Figma Variables", "Momcozy semantic theme", "shadcn/Radix primitives", "Component docs & registry", "Product apps & demos"],
+    boundariesEyebrow: "Important boundaries",
+    boundariesTitle: "What the Skill does not do automatically",
+    boundariesLead: "These boundaries keep the package reliable and prevent a prompt from silently changing the shared design system.",
+    boundaries: [
+      "It does not replace the component library, Figma library, or product codebase; it guides the AI agent in how to work with them.",
+      "It does not install shadcn/ui inside the Skill. shadcn/ui is initialized only in a target frontend project that actually needs components.",
+      "It does not publish, deploy, or approve a design-system change without an explicit request and a verified action.",
+      "New icon candidates are documented for review first; they do not enter the formal semantic registry until the owner approves them.",
+    ],
     inventoryTitle: "What is already included",
-    inventoryLead: "The current workspace covers component source, Momcozy-specific patterns, operating guidance, and complete product scenarios.",
+    inventoryLead: "The current workspace gives the Skill a visible validation environment, not just a set of written rules.",
     metricLabels: ["Documented components", "Momcozy components", "System documents", "Product demos"],
-    galleryEyebrow: "Component Gallery",
-    galleryTitle: "All components, in one place.",
-    galleryLead: "The gallery below is the visual coverage map. Use the component list in the sidebar for focused installation, usage, examples, accessibility, and API documentation.",
+    galleryEyebrow: "Component quick links",
+    galleryTitle: "Every component, one click away.",
+    galleryLead: "components are listed below in the same order as the left navigation. Select any component to open its installation, usage, examples, accessibility, and API documentation.",
+    momcozyQuickGroup: "Momcozy components",
+    shadcnQuickGroup: "shadcn/ui components",
   },
   zh: {
-    eyebrow: "Momcozy 3.0 · 组件文档与验收环境",
+    eyebrow: "Momcozy 3.0 · Agent Skill",
     title: "从设计规范，到可交付资产",
-    lead: "Momcozy UI 是一套将设计规范转化为可交付资产的工程化工作区。它统一承载 Design Tokens、Codex 规则包、前端组件、真实业务 Demo、审查文档与版本发布包，让设计决策能够被实现、验证并持续复用。",
-    deliveryFlowLabel: "从设计规范到可交付资产",
-    deliveryFlow: ["设计规范", "Token / Skill", "组件", "产品场景验证", "审计", "发布套件"],
-    layersTitle: "主要包含 5 层",
-    layers: [
-      ["设计规则层", "Momcozy Skill 包含 Light/Dark Token、字体、shadcn/ui 映射、组件规则、场景模板和审计脚本。当前以 Grays 作为默认中性色，Mom、Care、Parenting、Family 按明确产品线使用。"],
-      ["前端实现层", "根目录的 React + Vite 工程提供 Momcozy App 预览壳、Light/Dark 切换、组件入口和 Demo 承载。"],
-      ["组件库层", "组件分层文档中有 5 个 Momcozy 专属组件，包括 Toolbar Top、Toolbar Top Sheet、Liquid Glass Button、Title 和 Tab Bar；完整的 momcozy-ui-playground 当前收录 69 个组件文档入口。"],
-      ["产品 Demo 层", "Demo Library 目前有 6 个完整场景：User Guide、Group Pumping Community、Voice Log、Cozy AI、AI Lactation Plan 和 Partner Mode。这里验证的不只是组件外观，还包括完整流程、交互和主题适配。"],
-      ["治理与交付层", "统一管理 Hugeicons 语义图标、候选图标评审、Token 审计和视觉 QA，并通过版本发布包提供可安装的 .skill、可编辑 Demo ZIP 和校验文件。"],
+    lead: "momcozy-shadcn-design-system 是一套基于开放 Agent Skills 标准的设计系统执行包。它让支持 Skills 的 AI Agent 读取 Momcozy Token、组件、图标与验证流程，并把需求转化为可继续使用的设计、代码和审查结果。",
+    positioningNote: "当前安装与调用流程主要针对 ChatGPT/Codex；其他支持 Agent Skills 标准的智能体可以复用核心内容，但安装方式与兼容性需要单独验证。",
+    installAction: "安装这个 Skill",
+    workflowAction: "先看工作流程",
+    mapEyebrow: "内容结构",
+    mapTitle: "这个 Skill 里有什么",
+    mapLead: "从安装、设计规则到工程接入和验收，6 个部分各自负责一类工作。",
+    useCasesEyebrow: "安装前先了解",
+    useCasesTitle: "这个 Skill 可以帮你做什么？",
+    useCasesLead: "当任务需要 Momcozy 的具体设计判断，而不是一套通用界面时，就适合使用它。",
+    useCases: [
+      ["产品与 UX 设计", "把需求或已有界面整理成 Token 驱动的设计规格，检查 UI 一致性，或探索新的 Momcozy 产品方向。"],
+      ["前端实现", "用 Momcozy semantic tokens、shadcn/ui 原语、Light/Dark Mode 和统一 Hugeicons 实现或重构 React 界面。"],
+      ["完整产品 Demo", "生成智能母婴硬件、设备管理、护理、家庭健康、内容或社区等完整场景，而不是只展示孤立组件。"],
+      ["设计系统治理", "在设计系统更新前审计 Token 覆盖、主题映射、组件状态和图标候选，明确哪些可以复用、哪些仍需决策。"],
     ],
-    problemsTitle: "这个项目真正解决 3 个问题",
-    problems: [
-      ["让 Token 可以执行", "让 Figma Token 不再只是设计稿里的变量，而是能进入 CSS、shadcn/ui 和 React 的可执行规范。"],
-      ["让生成结果有统一约束", "让 Codex 或研发生成 Momcozy 页面时遵循同一套规则，减少颜色、字体、圆角、图标和组件使用上的漂移。"],
-      ["让复用经过真实验证", "用组件页验证能否复用，用产品 Demo 验证放进真实流程后是否成立，最后再打包给团队继续使用。"],
+    workflowEyebrow: "用户使用流程",
+    workflowTitle: "从你的需求，到经过验证的结果",
+    workflowLead: "你只需要说清楚想得到什么；Skill 会为 AI Agent 补齐 Momcozy 上下文、判断规则和必要检查。",
+    workflowSteps: [
+      ["把任务交给 AI Agent", "提供需求、截图、Figma 链接、代码仓库，或要新建 / 检查的页面与组件。"],
+      ["只读取这次需要的规则", "AI Agent 先读 Skill 入口，再按任务加载颜色、字体、组件、图标或 Demo 等相关文档，不会一次塞入全部内容。"],
+      ["检查当前项目", "AI Agent 动手前先确认技术栈、现有主题、组件和视觉基线，让结果适配当前工程，而不是另起一套。"],
+      ["把判断映射到规范", "颜色、字体、间距、圆角、状态、组件和图标都映射到 Momcozy 语义，不临时编造设计值。"],
+      ["生成或修改交付物", "AI Agent 根据任务产出设计规格、页面代码、主题 CSS、组件、产品 Demo 或审查文档。"],
+      ["验证并说明结果", "AI Agent 完成相关审计、构建、交互和视觉检查，再说明改了什么、哪些已通过、哪些仍需要你决策。"],
     ],
-    frameworkTitle: "基于开放、可编辑的前端技术栈",
-    frameworkLead: "组件源码归项目所有，Momcozy token 始终作为视觉事实源，避免在每个页面里重复硬编码设计值。",
-    frameworks: [
-      ["React 19 + TypeScript", "负责运行时组合、类型化 API 与可维护的组件契约。"],
-      ["shadcn/ui + Radix UI", "提供可编辑的组件源码与可访问性交互原语，而不是封闭依赖。"],
-      ["Tailwind CSS 4", "承载语义工具类、组件状态、响应式布局和主题接入。"],
-      ["Momcozy 3.0 tokens", "统一 Light/Dark、产品线语义、字体、间距、圆角和焦点状态。"],
-      ["Hugeicons", "统一控件、导航和产品反馈中的语义图标语言。"],
-      ["Codex Skill + Markdown", "让设计规则既能被 Codex 执行，也能被设计与开发人员审阅。"],
+    installationEyebrow: "最简单的安装方式",
+    installationTitle: "在 Agent 对话里粘贴一句话",
+    installationLead: "不用先克隆仓库、解压文件，也不用为了安装 Skill 提前配置 shadcn/ui。把下面这句话发给 Codex，它会自动下载并安装完整目录。",
+    installRequirement: "你只需要准备好 Codex，并能访问公司的 GitHub 仓库。",
+    installPromptLabel: "复制这句话，发送给 Codex",
+    installPrompt: "请从 https://github.com/liyunlong625188-sys/Momcozy-Design-System-UI/tree/main/skills/momcozy-shadcn-design-system 安装这个 Skill。",
+    copyInstall: "复制安装指令",
+    copied: "已复制",
+    copyFailed: "没有复制成功，请选中文字后手动复制。",
+    installSteps: [
+      ["打开 Codex", "新建或进入任意一个可以发送消息的任务。"],
+      ["粘贴安装指令", "Codex 会把完整目录安装到你的个人 skills 目录；看到安装完成的回复后再继续。"],
+      ["下一轮开始使用", "需要确保调用时，在需求中明确写出 $momcozy-shadcn-design-system。"],
     ],
-    valueTitle: "它带来的价值",
+    firstUseLabel: "推荐的第一次调用",
+    firstUsePrompt: "使用 $momcozy-shadcn-design-system。先说明这次会读取哪些 Momcozy 规则，再设计一个支持 Light/Dark Mode 的智能吸奶器设备详情页。",
+    copyFirstUse: "复制首次调用",
+    installVerify: "Codex 明确回复安装完成，并且下一轮可以使用 $momcozy-shadcn-design-system，就代表安装成功。如果暂时没有显示，先新建一个任务；仍未出现时再重启一次 Codex。",
+    installAlternative: "如果当前无法访问 GitHub，可以把公司内部分享的 .skill 文件附加到 Codex，并说“请安装这个 Skill”。手动复制完整目录只作为最后的备用方式。",
+    structureEyebrow: "Skill 里面有什么",
+    structureTitle: "5 个部分，各自只负责一件事",
+    structureLead: "整个包采用按需读取：AI Agent 从入口开始，只在任务需要时继续读取具体规范或运行脚本，既保留完整规则，也避免无关上下文。",
+    structureItems: [
+      ["SKILL.md", "总入口与操作说明：定义什么时候启用、需要读取哪些资料、按什么顺序执行，以及必须遵守的边界。"],
+      ["references/", "可供人和 AI Agent 阅读的规范：涵盖 Token、颜色、字体、组件、图标、shadcn/ui 接入与产品 Demo 模式。"],
+      ["assets/", "设计系统源资产：包括 Light/Dark Token 导出、生成后的语义主题 CSS，以及 Momcozy 品牌字体与 UI 字体。"],
+      ["scripts/", "可重复执行的生成与审计工具：负责主题转换、Token 覆盖、未解析引用、图标使用和候选图标清单。"],
+      ["agents/", "Skill 的展示信息和默认提示词，帮助兼容的宿主正确识别、呈现和启动这个 Skill。"],
+    ],
+    outcomesEyebrow: "用完能得到什么",
+    outcomesTitle: "可以继续使用的真实交付物",
+    outcomesLead: "具体产出跟随你的需求；一次任务可能得到其中一种，也可能组合得到多种。",
+    outcomes: [
+      ["符合 Momcozy 的设计结果", "包含页面结构、状态、文案层级、Light/Dark Mode 和产品线语义，不只是“看起来差不多”。"],
+      ["可继续编辑的实现资产", "包括 React 组件、页面代码、semantic CSS、Token 映射，或可以运行的完整产品 Demo。"],
+      ["清楚的审查与决策记录", "列出 Token 缺口、图标候选、组件例外、风险，以及仍需要设计系统负责人确认的事项。"],
+      ["看得见的验证证据", "提供构建、审计、交互或视觉 QA 结果，并明确区分哪些已通过、哪些尚未验证。"],
+    ],
+    valueTitle: "它给团队带来的好处",
     values: [
-      ["单一事实源", "Figma token、语义 CSS、组件预览和使用文档遵循同一份主题契约。"],
-      ["提高设计还原一致性", "设计与开发可以检查同一套状态、变体、响应式行为和可访问性预期。"],
-      ["可复用，也保留代码所有权", "业务团队按需复制组件源码并继续适配，不需要等待第三方组件包发版。"],
-      ["降低升级风险", "在业务接入前集中暴露 token 更新、shadcn 升级、Light/Dark 和视觉回归问题。"],
+      ["少重复解释规范", "安装一次设计系统上下文，不必在每条提示词里反复说明颜色、字体、组件和图标规则。"],
+      ["提高产出一致性", "设计、研发与 AI Agent 使用同一份语义契约，减少临时色值、组件误用和实现漂移。"],
+      ["让判断可以追溯", "规则保存在可阅读的 Markdown 中，转换与审计保存在脚本中，结果可以检查，也可以重复执行。"],
+      ["让规范演进更安全", "Token、图标和组件变更先经过明确的审计与决策门禁，再进入团队共享规范。"],
     ],
-    architectureTitle: "系统如何连接",
-    architectureLead: "每一层只承担一种职责，让 token 变化通过语义层传递，而不是散落到所有产品组件中。",
-    architectureSteps: ["Figma Variables", "Momcozy 语义主题", "shadcn/Radix 原语", "组件文档与 Registry", "产品应用与 Demo"],
+    boundariesEyebrow: "重要边界",
+    boundariesTitle: "它不会自动替你做这些决定",
+    boundariesLead: "这些边界能避免一条提示词悄悄改变整个设计系统，也是团队放心复用的前提。",
+    boundaries: [
+      "它不会替代组件库、Figma Library 或业务代码仓库；它负责指导 AI Agent 应该如何使用它们。",
+      "它不会把 shadcn/ui 安装进 Skill；只有具体前端项目确实需要组件时，才在目标项目内初始化。",
+      "它不会在没有明确请求和实际验证的情况下，宣称已经 Publish、部署或批准设计系统变更。",
+      "新图标会先生成待决策清单；只有负责人确认后，才能进入正式语义注册表。",
+    ],
     inventoryTitle: "目前已经包含什么",
-    inventoryLead: "当前工作空间覆盖组件源码、Momcozy 专属模式、使用规范和完整产品场景。",
+    inventoryLead: "当前工作空间为 Skill 提供了可见、可运行的验收环境，不只是一组文字规范。",
     metricLabels: ["已文档化组件", "Momcozy 专属组件", "系统文档", "产品 Demo"],
-    galleryEyebrow: "组件总览",
-    galleryTitle: "所有组件，一目了然。",
-    galleryLead: "下方总览用于检查视觉覆盖；需要查看安装、用法、示例、可访问性与 API 时，请直接使用左侧组件目录。",
+    galleryEyebrow: "组件快速入口",
+    galleryTitle: "所有组件，一键直达。",
+    galleryLead: "个组件全部列在下方，顺序与左侧导航保持一致；点击任意组件即可进入对应的安装、用法、示例、可访问性与 API 文档。",
+    momcozyQuickGroup: "Momcozy 定制组件",
+    shadcnQuickGroup: "shadcn/ui 组件",
   },
 } as const
 
@@ -627,14 +783,56 @@ function Section({ id, eyebrow = id, title, description, children }: { id: strin
   )
 }
 
-function IntroductionOverview({ locale, onComponent }: { locale: Locale; onComponent: (slug: string) => void }) {
+function IntroductionOverview({
+  locale,
+  onCatalogTarget,
+  onMarkdown,
+  onDemo,
+  onComponent,
+}: {
+  locale: Locale
+  onCatalogTarget: (target: string) => void
+  onMarkdown: (id: string) => void
+  onDemo: (id: string) => void
+  onComponent: (slug: string) => void
+}) {
   const content = introductionCopy[locale]
+  const [copiedPrompt, setCopiedPrompt] = useState<"install" | "first-use" | null>(null)
   const metrics = [
     componentDocs.length,
     componentDocs.filter((component) => component.customPath).length,
     markdownEntries.length,
     demoEntries.length,
   ]
+  const componentQuickGroups = [
+    {
+      id: "momcozy",
+      label: content.momcozyQuickGroup,
+      components: componentDocs.filter((component) => component.customPath),
+    },
+    {
+      id: "shadcn",
+      label: content.shadcnQuickGroup,
+      components: componentDocs.filter((component) => !component.customPath),
+    },
+  ]
+
+  const scrollToSection = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
+  const openContentMapItem = (action: SkillContentMapAction) => {
+    if (action.type === "catalog") onCatalogTarget(action.id)
+    if (action.type === "markdown") onMarkdown(action.id)
+    if (action.type === "demo") onDemo(action.id)
+  }
+  const copyPrompt = async (kind: "install" | "first-use", text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedPrompt(kind)
+      toast.success(content.copied)
+      window.setTimeout(() => setCopiedPrompt(null), 1800)
+    } catch {
+      toast.error(content.copyFailed)
+    }
+  }
 
   return (
     <div className="intro-page">
@@ -642,55 +840,140 @@ function IntroductionOverview({ locale, onComponent }: { locale: Locale; onCompo
         <Badge variant="secondary">{content.eyebrow}</Badge>
         <h1>{content.title}</h1>
         <p className="intro-hero-lead">{content.lead}</p>
-
-        <div className="intro-delivery-flow" aria-label={content.deliveryFlowLabel}>
-          <span>{content.deliveryFlowLabel}</span>
-          <ol>
-            {content.deliveryFlow.map((step) => <li key={step}>{step}</li>)}
-          </ol>
-        </div>
-
-        <div className="intro-overview-block">
-          <div className="intro-overview-heading">
-            <span>{uiCopy[locale].inventory}</span>
-            <h2>{content.layersTitle}</h2>
-          </div>
-          <ol className="intro-layer-list">
-            {content.layers.map(([title, description], index) => (
-              <li key={title}>
-                <b>{String(index + 1).padStart(2, "0")}</b>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="intro-overview-block">
-          <div className="intro-overview-heading">
-            <span>{uiCopy[locale].value}</span>
-            <h2>{content.problemsTitle}</h2>
-          </div>
-          <div className="intro-problem-grid">
-            {content.problems.map(([title, description], index) => (
-              <article key={title}>
-                <b>{String(index + 1).padStart(2, "0")}</b>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
+        <p className="intro-positioning-note">{content.positioningNote}</p>
+        <div className="intro-hero-actions">
+          <Button type="button" size="lg" onClick={() => scrollToSection("installation")}>{content.installAction}</Button>
+          <Button type="button" size="lg" variant="outline" onClick={() => scrollToSection("workflow")}>{content.workflowAction}</Button>
         </div>
       </section>
 
-      <section id="framework" className="intro-section">
+      <section id="content-map" className="intro-section intro-content-map-section">
         <div className="intro-section-heading">
-          <span>{uiCopy[locale].framework}</span>
-          <h2>{content.frameworkTitle}</h2>
-          <p>{content.frameworkLead}</p>
+          <span>{content.mapEyebrow}</span>
+          <h2>{content.mapTitle}</h2>
+          <p>{content.mapLead}</p>
         </div>
-        <div className="intro-framework-grid">
-          {content.frameworks.map(([title, description]) => <article key={title}><h3>{title}</h3><p>{description}</p></article>)}
+        <div className="intro-content-map-grid">
+          {skillContentMap.map((group, index) => (
+            <article key={group.id} className="intro-content-map-card">
+              <header>
+                <b>{String(index + 1).padStart(2, "0")}</b>
+                <h3>{group.title[locale]}</h3>
+              </header>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item.label.en}>
+                    <button type="button" onClick={() => openContentMapItem(item.action)}>
+                      <span>{item.label[locale]}</span>
+                      <span aria-hidden="true">→</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="use-cases" className="intro-section">
+        <div className="intro-section-heading">
+          <span>{content.useCasesEyebrow}</span>
+          <h2>{content.useCasesTitle}</h2>
+          <p>{content.useCasesLead}</p>
+        </div>
+        <div className="intro-use-case-grid">
+          {content.useCases.map(([title, description], index) => (
+            <article key={title}>
+              <b>{String(index + 1).padStart(2, "0")}</b>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="installation" className="intro-section intro-install-section">
+        <div className="intro-section-heading">
+          <span>{content.installationEyebrow}</span>
+          <h2>{content.installationTitle}</h2>
+          <p>{content.installationLead}</p>
+        </div>
+        <div className="intro-install-card">
+          <p className="intro-install-requirement">{content.installRequirement}</p>
+          <div className="intro-prompt-block">
+            <span>{content.installPromptLabel}</span>
+            <code>{content.installPrompt}</code>
+            <Button type="button" variant="outline" onClick={() => void copyPrompt("install", content.installPrompt)}>
+              {copiedPrompt === "install" ? content.copied : content.copyInstall}
+            </Button>
+          </div>
+          <ol className="intro-install-steps">
+            {content.installSteps.map(([title, description], index) => (
+              <li key={title}>
+                <b>{index + 1}</b>
+                <div><h3>{title}</h3><p>{description}</p></div>
+              </li>
+            ))}
+          </ol>
+          <div id="first-use" className="intro-prompt-block intro-prompt-block-secondary">
+            <span>{content.firstUseLabel}</span>
+            <code>{content.firstUsePrompt}</code>
+            <Button type="button" variant="outline" onClick={() => void copyPrompt("first-use", content.firstUsePrompt)}>
+              {copiedPrompt === "first-use" ? content.copied : content.copyFirstUse}
+            </Button>
+          </div>
+          <p className="intro-install-verify">{content.installVerify}</p>
+          <aside className="intro-install-alternative">{content.installAlternative}</aside>
+        </div>
+      </section>
+
+      <section id="workflow" className="intro-section">
+        <div className="intro-section-heading">
+          <span>{content.workflowEyebrow}</span>
+          <h2>{content.workflowTitle}</h2>
+          <p>{content.workflowLead}</p>
+        </div>
+        <ol className="intro-workflow-list">
+          {content.workflowSteps.map(([title, description], index) => (
+            <li key={title}>
+              <b>{String(index + 1).padStart(2, "0")}</b>
+              <div><h3>{title}</h3><p>{description}</p></div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="structure" className="intro-section">
+        <div className="intro-section-heading">
+          <span>{content.structureEyebrow}</span>
+          <h2>{content.structureTitle}</h2>
+          <p>{content.structureLead}</p>
+        </div>
+        <ol className="intro-layer-list intro-structure-list">
+          {content.structureItems.map(([title, description], index) => (
+            <li key={title}>
+              <b>{String(index + 1).padStart(2, "0")}</b>
+              <h3><code>{title}</code></h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="outcomes" className="intro-section">
+        <div className="intro-section-heading">
+          <span>{content.outcomesEyebrow}</span>
+          <h2>{content.outcomesTitle}</h2>
+          <p>{content.outcomesLead}</p>
+        </div>
+        <div className="intro-outcome-grid">
+          {content.outcomes.map(([title, description], index) => (
+            <article key={title}>
+              <b>{String(index + 1).padStart(2, "0")}</b>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -704,15 +987,15 @@ function IntroductionOverview({ locale, onComponent }: { locale: Locale; onCompo
         </div>
       </section>
 
-      <section id="architecture" className="intro-section">
+      <section id="boundaries" className="intro-section">
         <div className="intro-section-heading">
-          <span>{uiCopy[locale].architecture}</span>
-          <h2>{content.architectureTitle}</h2>
-          <p>{content.architectureLead}</p>
+          <span>{content.boundariesEyebrow}</span>
+          <h2>{content.boundariesTitle}</h2>
+          <p>{content.boundariesLead}</p>
         </div>
-        <div className="intro-architecture" aria-label={content.architectureTitle}>
-          {content.architectureSteps.map((step, index) => <div key={step}><small>{String(index + 1).padStart(2, "0")}</small><strong>{step}</strong></div>)}
-        </div>
+        <ul className="intro-boundary-list">
+          {content.boundaries.map((boundary, index) => <li key={boundary}><b>{String(index + 1).padStart(2, "0")}</b><p>{boundary}</p></li>)}
+        </ul>
       </section>
 
       <section id="inventory" className="intro-section">
@@ -730,16 +1013,26 @@ function IntroductionOverview({ locale, onComponent }: { locale: Locale; onCompo
         <div>
           <span>{content.galleryEyebrow}</span>
           <h2>{content.galleryTitle}</h2>
-          <p>{content.galleryLead}</p>
+          <p><strong>{componentDocs.length}</strong> {content.galleryLead}</p>
         </div>
-        <nav aria-label={content.galleryEyebrow}>
-          {catalogue[locale].map(([id, title, description]) => (
-            <button key={id} type="button" onClick={() => onComponent(catalogueTargets[id as keyof typeof catalogueTargets])}>
-              <strong>{title}</strong>
-              <small>{description}</small>
-            </button>
+        <div className="intro-component-index">
+          {componentQuickGroups.map((group) => (
+            <section key={group.id} className="intro-component-group" aria-labelledby={`component-group-${group.id}`}>
+              <header className="intro-component-group-heading">
+                <h3 id={`component-group-${group.id}`}>{group.label}</h3>
+                <span>{group.components.length}</span>
+              </header>
+              <nav className="intro-component-links" aria-label={group.label}>
+                {group.components.map((component) => (
+                  <button key={component.slug} type="button" onClick={() => onComponent(component.slug)}>
+                    <strong>{componentTitle(component, locale)}</strong>
+                    <small>{component.slug}</small>
+                  </button>
+                ))}
+              </nav>
+            </section>
           ))}
-        </nav>
+        </div>
       </section>
     </div>
   )
@@ -762,7 +1055,7 @@ function PortalSidebar({
   locale: Locale
   open: boolean
   onClose: () => void
-  onCatalog: () => void
+  onCatalog: (target?: string) => void
   onMarkdown: (id: string) => void
   onDemo: (id: string) => void
   onComponent: (slug: string) => void
@@ -790,7 +1083,7 @@ function PortalSidebar({
   return (
     <aside className={`docs-sidebar ${open ? "is-open" : ""}`} aria-label={copy.libraryNavigation}>
       <div className="docs-sidebar-heading">
-        <button type="button" className="docs-brand" onClick={onCatalog}>
+        <button type="button" className="docs-brand" onClick={() => onCatalog("introduction")}>
           <span className="docs-brand-mark"><img src={momcozyRoundLogo} alt="" aria-hidden="true" /></span>
           <span><strong>Momcozy UI</strong><small>{copy.librarySubtitle}</small></span>
         </button>
@@ -802,18 +1095,36 @@ function PortalSidebar({
       <ScrollArea className="docs-sidebar-scroll">
         <nav className="docs-navigation">
           <div className="docs-nav-group">
-            <p>{copy.sections}</p>
-            <button type="button" className={view.type === "catalog" ? "is-active" : ""} onClick={onCatalog}>
-              {copy.introduction}
-            </button>
-            <button type="button" className={view.type === "markdown" && view.id === "shadcn-integration" ? "is-active" : ""} onClick={() => onMarkdown("shadcn-integration")}>{copy.installation}</button>
+            <p>{locale === "zh" ? "开始使用 Skill" : "Start Using Skill"}</p>
+            {catalogNavigationEntries.map((entry) => (
+              <button
+                key={entry.id}
+                type="button"
+                className={view.type === "catalog" ? "is-active" : ""}
+                onClick={() => onCatalog(entry.id)}
+              >
+                {entry.label[locale]}
+              </button>
+            ))}
           </div>
 
-          {renderMarkdownGroup("design-foundations")}
-          {renderMarkdownGroup("usage-and-engineering")}
+          {renderMarkdownGroup("design-rules")}
+          {renderMarkdownGroup("engineering-integration")}
 
           <div className="docs-nav-group">
-            <p>{copy.demos}</p>
+            <p>{locale === "zh" ? "场景验证" : "Scenario Validation"}</p>
+            {["demo-patterns", "demo-readme"].map((entryId) => {
+              const entry = markdownEntriesById.get(entryId)
+              return entry ? (
+                <button key={entry.id} type="button" className={view.type === "markdown" && view.id === entry.id ? "is-active" : ""} onClick={() => onMarkdown(entry.id)}>
+                  {entry.label[locale]}
+                </button>
+              ) : null
+            })}
+            <div className="docs-nav-subgroup">
+              <span>{locale === "zh" ? "产品 Demo" : "Product Demos"}</span>
+              <b>{demoEntries.length}</b>
+            </div>
             {demoEntries.map((entry) => (
               <button key={entry.id} type="button" className={view.type === "demo" && view.id === entry.id ? "is-active" : ""} onClick={() => onDemo(entry.id)}>
                 {entry.label[locale]}
@@ -821,17 +1132,37 @@ function PortalSidebar({
             ))}
           </div>
 
-          {renderMarkdownGroup("reviews")}
+          <div className="docs-nav-group">
+            <p>{locale === "zh" ? "治理与验收" : "Governance & QA"}</p>
+            {governanceNavigationSections.map((section) => (
+              <div key={section.id} className="docs-nav-nested-section">
+                <div className="docs-nav-subgroup"><span>{section.label[locale]}</span></div>
+                {section.entryIds.map((entryId) => {
+                  const entry = markdownEntriesById.get(entryId)
+                  return entry ? (
+                    <button key={entry.id} type="button" className={view.type === "markdown" && view.id === entry.id ? "is-active" : ""} onClick={() => onMarkdown(entry.id)}>
+                      {entry.label[locale]}
+                    </button>
+                  ) : null
+                })}
+              </div>
+            ))}
+          </div>
 
-          <div className="docs-nav-group docs-components-list">
-            <p>{locale === "zh" ? "Momcozy 定制组件" : "Momcozy Components"}</p>
+          <div className="docs-nav-group">
+            <p>{locale === "zh" ? "组件目录" : "Component Directory"}</p>
+            <div className="docs-nav-subgroup">
+              <span>{locale === "zh" ? "Momcozy 定制组件" : "Momcozy Components"}</span>
+              <b>{componentDocs.filter((component) => component.category === "Momcozy Components").length}</b>
+            </div>
             {componentDocs.filter((component) => component.category === "Momcozy Components").map((component) => (
               <button key={component.slug} type="button" className={view.type === "component" && view.slug === component.slug ? "is-active" : ""} onClick={() => onComponent(component.slug)}>
                 {componentTitle(component, locale)}
               </button>
             ))}
-            <div className="docs-components-divider" aria-hidden="true">
+            <div className="docs-nav-subgroup">
               <span>{locale === "zh" ? "shadcn/ui 组件" : "shadcn/ui Components"}</span>
+              <b>{componentDocs.filter((component) => component.category !== "Momcozy Components").length}</b>
             </div>
             {componentDocs.filter((component) => component.category !== "Momcozy Components").map((component) => (
               <button key={component.slug} type="button" className={view.type === "component" && view.slug === component.slug ? "is-active" : ""} onClick={() => onComponent(component.slug)}>
@@ -912,8 +1243,8 @@ function PreviewDocument({ entry, origin, locale, theme }: { entry: DemoEntry; o
 function RightRail({ view, locale, activeMarkdown, activeComponent, activeDemo, onCatalogTarget }: { view: LibraryView; locale: Locale; activeMarkdown?: MarkdownEntry; activeComponent?: (typeof componentDocs)[number]; activeDemo?: DemoEntry; onCatalogTarget: (target: string) => void }) {
   const copy = uiCopy[locale]
   const introductionToc = locale === "zh"
-    ? [["介绍", "introduction"], ["技术框架", "framework"], ["核心价值", "value"], ["系统架构", "architecture"], ["包含内容", "inventory"], ["组件总览", "component-gallery"]]
-    : [["Introduction", "introduction"], ["Framework", "framework"], ["Value", "value"], ["Architecture", "architecture"], ["What is included", "inventory"], ["Component Gallery", "component-gallery"]]
+    ? [["Skill 介绍", "introduction"], ["内容结构", "content-map"], ["适用场景", "use-cases"], ["安装 Skill", "installation"], ["第一次调用", "first-use"], ["使用流程", "workflow"], ["包结构与作用", "structure"], ["最终产出", "outcomes"], ["团队收益", "value"], ["兼容性与使用边界", "boundaries"], ["包含内容", "inventory"], ["组件总览", "component-gallery"]]
+    : [["Skill overview", "introduction"], ["Content map", "content-map"], ["Use cases", "use-cases"], ["Install Skill", "installation"], ["First use", "first-use"], ["Workflow", "workflow"], ["Package structure & purpose", "structure"], ["Outcomes", "outcomes"], ["Team value", "value"], ["Compatibility & boundaries", "boundaries"], ["What is included", "inventory"], ["Component Gallery", "component-gallery"]]
 
   return (
     <aside className="docs-right-rail" aria-label={copy.onThisPage}>
@@ -938,11 +1269,11 @@ function RightRail({ view, locale, activeMarkdown, activeComponent, activeDemo, 
 
 function App() {
   const [dark, setDark] = useState(false)
-  const [locale, setLocale] = useState<Locale>(() => window.localStorage.getItem("momcozy-ui-locale") === "zh" ? "zh" : "en")
+  const [locale, setLocale] = useState<Locale>(() => window.localStorage.getItem("momcozy-ui-locale") === "en" ? "en" : "zh")
   const [date, setDate] = useState<Date | undefined>()
   const [view, setView] = useState<LibraryView>(() => {
     const component = new URLSearchParams(window.location.search).get("component")
-    return component && componentDocsBySlug.has(component) ? { type: "component", slug: component } : { type: "catalog" }
+    return component && componentDocsBySlug.has(component) ? { type: "component", slug: component } : { type: "catalog", target: "introduction" }
   })
   const [navOpen, setNavOpen] = useState(false)
 
@@ -952,16 +1283,16 @@ function App() {
   const demoOrigin = import.meta.env.VITE_DEMO_ORIGIN ?? window.location.origin
   const copy = uiCopy[locale]
 
-  const showCatalogTarget = (target = "overview") => {
-    setView({ type: "catalog" })
+  const showCatalogTarget = (target = "introduction") => {
+    setView({ type: "catalog", target })
     window.history.pushState({}, "", window.location.pathname)
     setNavOpen(false)
     window.setTimeout(() => {
-      if (target === "overview") {
+      if (target === "introduction") {
         window.scrollTo({ top: 0, left: 0 })
         return
       }
-      const id = target.match(/^(introduction|framework|value|architecture|inventory|component-gallery|foundations|forms|navigation|overlays|data|messaging)$/) ? target : `demo-${target}`
+      const id = target.match(/^(introduction|content-map|use-cases|workflow|installation|first-use|structure|outcomes|value|boundaries|inventory|component-gallery|foundations|forms|navigation|overlays|data|messaging)$/) ? target : `demo-${target}`
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
     }, 60)
   }
@@ -991,7 +1322,7 @@ function App() {
     const timer = window.setTimeout(() => window.scrollTo({ top: 0, left: 0 }), 200)
     const onPopState = () => {
       const component = new URLSearchParams(window.location.search).get("component")
-      setView(component && componentDocsBySlug.has(component) ? { type: "component", slug: component } : { type: "catalog" })
+      setView(component && componentDocsBySlug.has(component) ? { type: "component", slug: component } : { type: "catalog", target: "introduction" })
     }
     window.addEventListener("popstate", onPopState)
     return () => {
@@ -1007,7 +1338,7 @@ function App() {
 
   useEffect(() => {
     if (view.type !== "markdown" || activeMarkdown) return
-    setView({ type: "catalog" })
+    setView({ type: "catalog", target: "introduction" })
     window.history.replaceState({}, "", window.location.pathname)
     window.scrollTo({ top: 0, left: 0 })
   }, [activeMarkdown, view.type])
@@ -1028,7 +1359,7 @@ function App() {
               locale={locale}
               open={navOpen}
               onClose={() => setNavOpen(false)}
-              onCatalog={() => showCatalogTarget()}
+              onCatalog={showCatalogTarget}
               onMarkdown={showMarkdown}
               onDemo={showDemo}
               onComponent={showComponent}
@@ -1067,7 +1398,7 @@ function App() {
 
               <main id="top" className="docs-main px-5 md:px-8">
                 {view.type === "catalog" ? <>
-              <IntroductionOverview locale={locale} onComponent={showComponent} />
+              <IntroductionOverview locale={locale} onCatalogTarget={showCatalogTarget} onMarkdown={showMarkdown} onDemo={showDemo} onComponent={showComponent} />
 
               {legacyGalleryEnabled && <LocalizedGallery locale={locale}>
               <Section id="forms" title="Forms" description="字段、输入、选择、日期与验证状态均使用同一套语义 token。">
