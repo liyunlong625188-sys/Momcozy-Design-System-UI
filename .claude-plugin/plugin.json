@@ -1,0 +1,19 @@
+{
+  "name": "momcozy-shadcn-design-system",
+  "displayName": "Momcozy 3.0 Design System",
+  "description": "Use Momcozy 3.0 light/dark tokens, Hugeicons, shadcn/ui, and bundled design rules to design, implement, and review maternal and baby care product interfaces.",
+  "author": {
+    "name": "Momcozy Design Team"
+  },
+  "homepage": "https://liyunlong625188-sys.github.io/Momcozy-Design-System-UI/",
+  "repository": "https://github.com/liyunlong625188-sys/Momcozy-Design-System-UI",
+  "keywords": [
+    "momcozy",
+    "design-system",
+    "design-tokens",
+    "shadcn",
+    "tailwind",
+    "hugeicons"
+  ],
+  "skills": "./skills/"
+}
